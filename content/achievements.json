@@ -2,21 +2,39 @@
   "highlights": [
     {
       "year": 2025,
-      "title": "5th in Australia — U18 Age Group",
-      "description": "Ranked 5th in the country for his age group, a testament to years of dedicated training and competitive excellence.",
+      "title": "5th in Australia — U17 Boys",
+      "description": "Ranked 5th nationally in the Under 17 Boys category in the January 2025 Table Tennis Australia national rankings, with 2,408 points.",
       "rank": "national"
     },
     {
       "year": 2025,
-      "title": "32nd in Australia — Overall National Ranking",
-      "description": "Achieved an overall national ranking of 32nd across all age groups — an outstanding accomplishment for a player of his age.",
+      "title": "32nd in Australia — Open Men",
+      "description": "Ranked 32nd in the Open Men national rankings (January 2025), competing against Australia's best players of all ages with a rating of over 2,000 points.",
       "rank": "national"
     },
     {
       "year": 2024,
-      "title": "NSW State Representative",
-      "description": "Selected to represent NSW at the national table tennis championships, competing against the best players in the country.",
+      "title": "Australian National Championships",
+      "description": "Competed at the 2024 Australian National Championships in July — his fourth consecutive Nationals appearance, having also competed in 2022 and 2023.",
+      "rank": "national"
+    },
+    {
+      "year": 2024,
+      "title": "NSW City v Country Representative",
+      "description": "Selected to represent his region in the annual NSW City v Country challenge, a prestigious state selection event.",
       "rank": "state"
+    },
+    {
+      "year": 2024,
+      "title": "Peak Rating of 1741",
+      "description": "Achieved a career-high RatingsCentral rating of 1741 in September 2024, the culmination of nearly a decade of competitive development.",
+      "rank": "other"
+    },
+    {
+      "year": 2023,
+      "title": "ACT Open Championships",
+      "description": "Strong performance at the ACT Open Championships in September 2023, gaining 25 rating points in a single tournament against interstate competition.",
+      "rank": "other"
     }
   ],
   "videos": [
@@ -26,6 +44,6 @@
       "description": "Match footage and highlights from Lachlan's competitive career."
     }
   ],
-  "club": "Table Tennis NSW",
-  "yearsActive": "2018–2025"
+  "club": "St George Table Tennis",
+  "yearsActive": "2015–2024"
 }
