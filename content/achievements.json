@@ -2,38 +2,110 @@
   "highlights": [
     {
       "year": 2025,
-      "title": "5th in Australia — U17 Boys",
-      "description": "Ranked 5th nationally in the Under 17 Boys category in the January 2025 Table Tennis Australia national rankings, with 2,408 points.",
+      "title": "Ranked 5th Nationally — TTA U17 Boys",
+      "description": "Ranked 5th in Australia in the Table Tennis Australia Under 17 Boys national rankings.",
       "rank": "national"
     },
     {
       "year": 2025,
-      "title": "32nd in Australia — Open Men",
-      "description": "Ranked 32nd in the Open Men national rankings (January 2025), competing against Australia's best players of all ages with a rating of over 2,000 points.",
+      "title": "Ranked 32nd Nationally — TTA Men",
+      "description": "Ranked 32nd in Australia in the Table Tennis Australia Men's national rankings, competing against players of all ages.",
       "rank": "national"
     },
     {
-      "year": 2024,
-      "title": "Australian National Championships",
-      "description": "Competed at the 2024 Australian National Championships in July — his fourth consecutive Nationals appearance, having also competed in 2022 and 2023.",
-      "rank": "national"
-    },
-    {
-      "year": 2024,
-      "title": "NSW City v Country Representative",
-      "description": "Selected to represent his region in the annual NSW City v Country challenge, a prestigious state selection event.",
+      "year": 2025,
+      "title": "Gold Medal — NSW Secondary Schools Boys Shield (Teams)",
+      "description": "Gold medallist representing his school in the NSW Secondary School Boys Shield Teams event.",
       "rank": "state"
     },
     {
       "year": 2024,
-      "title": "Peak Rating of 1741",
-      "description": "Achieved a career-high RatingsCentral rating of 1741 in September 2024, the culmination of nearly a decade of competitive development.",
+      "title": "Gold Medal — Australian U17 Boys Teams",
+      "description": "Gold medallist in the Australian Under 17 Boys Teams event at the national championships.",
+      "rank": "national"
+    },
+    {
+      "year": 2024,
+      "title": "Gold Medal — TTA Tour Mandurah, U17 Boys Singles",
+      "description": "Gold medallist in the Under 17 Boys Singles at the Table Tennis Australia Tour event in Mandurah.",
+      "rank": "national"
+    },
+    {
+      "year": 2024,
+      "title": "Gold Medal — TTA Tour Canberra, U17 Boys Singles",
+      "description": "Gold medallist in the Under 17 Boys Singles at the Table Tennis Australia Tour event in Canberra.",
+      "rank": "national"
+    },
+    {
+      "year": 2024,
+      "title": "Gold Medal — NSW Junior Closed, U21 Men's Singles",
+      "description": "Gold medallist in the Under 21 Men's Singles at the NSW Junior Closed Championships.",
+      "rank": "state"
+    },
+    {
+      "year": 2024,
+      "title": "Silver Medal — NSW Open, U21 Men's Singles",
+      "description": "Silver medallist in the Under 21 Men's Singles at the NSW Open Championships.",
+      "rank": "state"
+    },
+    {
+      "year": 2024,
+      "title": "TTA Accredited Level 1 Coach",
+      "description": "Achieved Table Tennis Australia Level 1 coaching accreditation, giving back to the sport he loved.",
       "rank": "other"
     },
     {
       "year": 2023,
-      "title": "ACT Open Championships",
-      "description": "Strong performance at the ACT Open Championships in September 2023, gaining 25 rating points in a single tournament against interstate competition.",
+      "title": "David Coleman MP Outstanding Sporting Achievement Award",
+      "description": "Awarded the 2018–2023 David Coleman MP (Banks) Outstanding Sporting Achievement Award in recognition of his table tennis achievements.",
+      "rank": "other"
+    },
+    {
+      "year": 2019,
+      "title": "Gold Medal — NSW Junior Open, U11 Boys Singles",
+      "description": "Gold medallist in the Under 11 Boys Singles at the NSW Junior Open Championships.",
+      "rank": "state"
+    },
+    {
+      "year": 2019,
+      "title": "Bronze Medal — NSW Junior Open, U11 Mixed Doubles",
+      "description": "Bronze medallist in the Under 11 Mixed Doubles at the NSW Junior Open Championships.",
+      "rank": "state"
+    },
+    {
+      "year": 2019,
+      "title": "Wendy Lindsay MP Table Tennis National Award",
+      "description": "Awarded the Wendy Lindsay MP (East Hills) Table Tennis National Award.",
+      "rank": "other"
+    },
+    {
+      "year": 2018,
+      "title": "Gold Medal — Australian Championships, U11 Boys Teams",
+      "description": "Gold medallist in the Under 11 Boys Teams event at the Australian Championships — his first national gold medal, aged 9.",
+      "rank": "national"
+    },
+    {
+      "year": 2018,
+      "title": "Bronze Medal — Australian Championships, U11 Mixed Doubles",
+      "description": "Bronze medallist in the Under 11 Mixed Doubles at the Australian Championships.",
+      "rank": "national"
+    },
+    {
+      "year": 2018,
+      "title": "Mark Coure MP Table Tennis National Award",
+      "description": "Awarded the Mark Coure MP (Oatley) Table Tennis National Award.",
+      "rank": "other"
+    },
+    {
+      "year": 2025,
+      "title": "Menai High School Outstanding Performance in State Knockout",
+      "description": "Recognised by Menai High School for outstanding performance in the State Knockout competition.",
+      "rank": "other"
+    },
+    {
+      "year": 2024,
+      "title": "Menai High School Diamond Award",
+      "description": "Recipient of the Menai High School Diamond Award, the school's highest honour for student achievement.",
       "rank": "other"
     }
   ],
@@ -45,5 +117,5 @@
     }
   ],
   "club": "St George Table Tennis",
-  "yearsActive": "2015–2024"
+  "yearsActive": "2015–2025"
 }
