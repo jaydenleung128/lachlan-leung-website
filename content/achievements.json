@@ -1,25 +1,31 @@
 {
   "highlights": [
     {
-      "year": 2023,
-      "title": "State Representative",
-      "description": "Selected to represent his state at the national table tennis championships, competing against the best players in the country.",
-      "rank": "state"
+      "year": 2025,
+      "title": "5th in Australia — U18 Age Group",
+      "description": "Ranked 5th in the country for his age group, a testament to years of dedicated training and competitive excellence.",
+      "rank": "national"
     },
     {
-      "year": 2022,
-      "title": "Club Champion",
-      "description": "Won the club championship in back-to-back years, demonstrating consistency and growth as a competitive player.",
-      "rank": "club"
+      "year": 2025,
+      "title": "32nd in Australia — Overall National Ranking",
+      "description": "Achieved an overall national ranking of 32nd across all age groups — an outstanding accomplishment for a player of his age.",
+      "rank": "national"
+    },
+    {
+      "year": 2024,
+      "title": "NSW State Representative",
+      "description": "Selected to represent NSW at the national table tennis championships, competing against the best players in the country.",
+      "rank": "state"
     }
   ],
   "videos": [
     {
       "youtubeId": "PLACEHOLDER",
-      "title": "State Championships — Highlights",
-      "description": "A collection of Lachlan's best moments from the state championships."
+      "title": "Highlights",
+      "description": "Match footage and highlights from Lachlan's competitive career."
     }
   ],
-  "club": "Sydney Table Tennis Club",
-  "yearsActive": "2015–2024"
+  "club": "Table Tennis NSW",
+  "yearsActive": "2018–2025"
 }

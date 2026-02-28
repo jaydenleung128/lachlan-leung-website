@@ -59,7 +59,7 @@ export function HeroSection() {
           variants={fadeUp}
           className="font-sans text-cream/60 text-lg tracking-wide mb-8"
         >
-          2004 – 2024
+          19 October 2008 – 7 January 2026
         </motion.p>
 
         <motion.p

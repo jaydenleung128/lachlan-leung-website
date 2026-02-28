@@ -17,10 +17,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://lachlanleung.com'),
   title: 'Lachlan Leung — In Loving Memory',
-  description: 'A celebration of the life of Lachlan Leung, table tennis representative.',
+  description: 'A celebration of the life of Lachlan Leung — Year 12 student, table tennis champion, and beloved son. 19 October 2008 – 7 January 2026.',
   openGraph: {
     title: 'Lachlan Leung — In Loving Memory',
-    description: 'A celebration of the life of Lachlan Leung, table tennis representative.',
+    description: 'A celebration of the life of Lachlan Leung — Year 12 student, table tennis champion, and beloved son. 19 October 2008 – 7 January 2026.',
     images: ['/images/hero.jpg'],
   },
 }
