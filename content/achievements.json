@@ -1,0 +1,25 @@
+{
+  "highlights": [
+    {
+      "year": 2023,
+      "title": "State Representative",
+      "description": "Selected to represent his state at the national table tennis championships, competing against the best players in the country.",
+      "rank": "state"
+    },
+    {
+      "year": 2022,
+      "title": "Club Champion",
+      "description": "Won the club championship in back-to-back years, demonstrating consistency and growth as a competitive player.",
+      "rank": "club"
+    }
+  ],
+  "videos": [
+    {
+      "youtubeId": "PLACEHOLDER",
+      "title": "State Championships — Highlights",
+      "description": "A collection of Lachlan's best moments from the state championships."
+    }
+  ],
+  "club": "Sydney Table Tennis Club",
+  "yearsActive": "2015–2024"
+}
