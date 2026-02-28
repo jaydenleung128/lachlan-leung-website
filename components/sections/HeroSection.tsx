@@ -69,11 +69,8 @@ export function HeroSection() {
           variants={fadeUp}
           className="max-w-lg mx-auto"
         >
-          <p className="font-serif text-4xl sm:text-5xl text-cream/90 italic mb-2">
-            &ldquo;Relax.&rdquo;
-          </p>
-          <p className="font-sans text-cream/40 text-sm tracking-widest uppercase">
-            — Lachlan
+          <p className="font-serif text-4xl sm:text-5xl text-cream/90 italic">
+            &ldquo;Relax.&rdquo; <span className="font-sans text-cream/40 text-sm tracking-widest uppercase not-italic align-middle">— Lachlan</span>
           </p>
         </motion.div>
       </div>
