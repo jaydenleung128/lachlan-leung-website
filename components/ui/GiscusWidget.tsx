@@ -6,9 +6,9 @@ export function GiscusWidget() {
   return (
     <Giscus
       repo="jaydenleung128/lachlan-leung-website"
-      repoId="TODO"
+      repoId="R_kgDORbHVaQ"
       category="Tributes"
-      categoryId="TODO"
+      categoryId="DIC_kwDORbHVac4C3aCD"
       mapping="pathname"
       strict="0"
       reactionsEnabled="1"
