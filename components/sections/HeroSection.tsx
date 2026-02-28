@@ -62,15 +62,20 @@ export function HeroSection() {
           19 October 2008 – 7 January 2026
         </motion.p>
 
-        <motion.p
+        <motion.div
           custom={1.0}
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="font-serif text-xl sm:text-2xl text-cream/80 italic max-w-lg mx-auto"
+          className="max-w-lg mx-auto"
         >
-          &ldquo;He played every point like it mattered, because to him, it did.&rdquo;
-        </motion.p>
+          <p className="font-serif text-4xl sm:text-5xl text-cream/90 italic mb-2">
+            &ldquo;Relax.&rdquo;
+          </p>
+          <p className="font-sans text-cream/40 text-sm tracking-widest uppercase">
+            — Lachlan
+          </p>
+        </motion.div>
       </div>
 
       <div className="relative z-10 text-cream">
