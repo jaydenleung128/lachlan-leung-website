@@ -19,6 +19,12 @@
       "rank": "state"
     },
     {
+      "year": 2025,
+      "title": "Menai High School Outstanding Performance in State Knockout",
+      "description": "Recognised by Menai High School for outstanding performance in the State Knockout competition.",
+      "rank": "other"
+    },
+    {
       "year": 2024,
       "title": "Gold Medal — Australian U17 Boys Teams",
       "description": "Gold medallist in the Australian Under 17 Boys Teams event at the national championships.",
@@ -52,6 +58,12 @@
       "year": 2024,
       "title": "TTA Accredited Level 1 Coach",
       "description": "Achieved Table Tennis Australia Level 1 coaching accreditation, giving back to the sport he loved.",
+      "rank": "other"
+    },
+    {
+      "year": 2024,
+      "title": "Menai High School Diamond Award",
+      "description": "Recipient of the Menai High School Diamond Award, the school's highest honour for student achievement.",
       "rank": "other"
     },
     {
@@ -94,18 +106,6 @@
       "year": 2018,
       "title": "Mark Coure MP Table Tennis National Award",
       "description": "Awarded the Mark Coure MP (Oatley) Table Tennis National Award.",
-      "rank": "other"
-    },
-    {
-      "year": 2025,
-      "title": "Menai High School Outstanding Performance in State Knockout",
-      "description": "Recognised by Menai High School for outstanding performance in the State Knockout competition.",
-      "rank": "other"
-    },
-    {
-      "year": 2024,
-      "title": "Menai High School Diamond Award",
-      "description": "Recipient of the Menai High School Diamond Award, the school's highest honour for student achievement.",
       "rank": "other"
     }
   ],
