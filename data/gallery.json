@@ -1,10 +1,10 @@
 [
-  {
-    "filename": "seoul_library.jpg",
-    "description": "Seoul National Library"
-  },
-  {
-    "filename": "seoul_deer_park.jpg",
-    "description": "Deer Park, Seoul"
-  }
+  { "filename": "seoul_library.jpg",   "description": "Seoul National Library" },
+  { "filename": "seoul_deer_park.jpg", "description": "Deer Park, Seoul" },
+  { "filename": "seoul_library.jpg",   "description": "Exploring Seoul" },
+  { "filename": "seoul_deer_park.jpg", "description": "Feeding the deer" },
+  { "filename": "seoul_library.jpg",   "description": "A quiet afternoon" },
+  { "filename": "seoul_deer_park.jpg", "description": "Nature walk together" },
+  { "filename": "seoul_library.jpg",   "description": "Korean adventure" },
+  { "filename": "seoul_deer_park.jpg", "description": "Family memories" }
 ]
