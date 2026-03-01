@@ -8,8 +8,6 @@ import { PlayerSection } from '@/components/sections/PlayerSection'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { TributesSection } from '@/components/sections/TributesSection'
 import { QuietZoneSection } from '@/components/sections/QuietZoneSection'
-import { NavDots } from '@/components/ui/NavDots'
-
 export default async function HomePage() {
   const [about, tributes, achievements, galleryImages] = await Promise.all([
     getAbout(),
@@ -20,7 +18,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <NavDots />
       <main>
         <HeroSection />
         <AboutSection content={about} />

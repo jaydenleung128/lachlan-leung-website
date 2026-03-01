@@ -2,19 +2,33 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-navy:    #0f1e3d;
-  --color-gold:    #c9a84c;
-  --color-cream:   #f8f5ee;
-  --color-dark-bg: #0a0f1a;
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-sans:  var(--font-inter), system-ui, sans-serif;
+  --color-parchment:   #f5efe6;
+  --color-rose:        #d4a0a0;
+  --color-sage:        #8aaa8a;
+  --color-brown:       #4a3728;
+  --color-brown-light: #7a6558;
+  --color-cream-warm:  #faf6f0;
+
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans:  var(--font-nunito), system-ui, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background-color: #f5efe6;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-brown);
+  background-color: var(--color-parchment);
+}
 
 @utility prose-memorial {
-  --tw-prose-body:     var(--color-navy);
-  --tw-prose-headings: var(--color-navy);
-  --tw-prose-links:    var(--color-gold);
-  --tw-prose-bold:     var(--color-navy);
+  --tw-prose-body:     var(--color-brown);
+  --tw-prose-headings: var(--color-brown);
+  --tw-prose-links:    var(--color-rose);
+  --tw-prose-bold:     var(--color-brown);
+  --tw-prose-quotes:   var(--color-brown-light);
+  --tw-prose-hr:       var(--color-rose);
 }
