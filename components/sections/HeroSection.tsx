@@ -5,79 +5,165 @@ import type { Variants } from 'framer-motion'
 import { ScrollCue } from '@/components/ui/ScrollCue'
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 28 },
   show: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.0, delay, ease: [0.43, 0.13, 0.23, 0.96] },
   }),
+}
+
+const breathe: Variants = {
+  initial: { y: 0 },
+  animate: {
+    y: [0, -6, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: [0.45, 0.05, 0.55, 0.95],
+    },
+  },
 }
 
 export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-navy"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      style={{ background: '#f5efe6' }}
     >
-      {/* Background image */}
+      {/* Hero image — warm sepia, low opacity */}
       <img
         src="/images/hero.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          opacity:  0.18,
+          filter:   'sepia(0.35) brightness(0.82)',
+          mixBlendMode: 'multiply',
+        }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/40 to-navy/80" />
+      {/* Warm radial vignette overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(74,55,40,0.22) 70%, rgba(74,55,40,0.55) 100%)',
+        }}
+      />
+
+      {/* Soft edge darkening for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(245,239,230,0.1) 0%, rgba(245,239,230,0.0) 40%, rgba(245,239,230,0.25) 100%)',
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 text-center text-cream px-6 max-w-3xl">
+      <div className="relative z-10 text-center px-6 max-w-3xl flex flex-col items-center">
+
+        {/* Label */}
         <motion.p
           custom={0.2}
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="font-sans text-gold text-sm tracking-widest uppercase mb-6"
+          className="font-sans text-sm tracking-widest mb-8 italic"
+          style={{ color: '#8aaa8a', letterSpacing: '0.18em' }}
         >
-          In Loving Memory
+          in loving memory
         </motion.p>
 
-        <motion.h1
-          custom={0.5}
-          initial="hidden"
-          animate="show"
-          variants={fadeUp}
-          className="font-serif text-6xl sm:text-8xl text-cream mb-4 leading-none"
-        >
-          Lachlan Leung
-        </motion.h1>
-
-        <motion.p
-          custom={0.8}
-          initial="hidden"
-          animate="show"
-          variants={fadeUp}
-          className="font-sans text-cream/60 text-lg tracking-wide mb-8"
-        >
-          19 October 2008 – 7 January 2026
-        </motion.p>
-
+        {/* First name — large handwritten-feel display */}
         <motion.div
-          custom={1.0}
+          variants={breathe}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h1
+            custom={0.5}
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            className="font-serif italic leading-none mb-1 select-none"
+            style={{
+              fontSize:   'clamp(5rem, 16vw, 11rem)',
+              color:      '#4a3728',
+              letterSpacing: '-0.02em',
+              lineHeight: 1,
+            }}
+          >
+            Lachlan
+          </motion.h1>
+        </motion.div>
+
+        {/* Last name — smaller, spaced */}
+        <motion.p
+          custom={0.65}
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="max-w-lg mx-auto"
+          className="font-serif tracking-widest uppercase mb-6"
+          style={{
+            fontSize:      'clamp(1.2rem, 3.5vw, 2rem)',
+            color:         '#7a6558',
+            letterSpacing: '0.3em',
+          }}
         >
-          <p className="font-serif text-4xl sm:text-5xl text-cream/90 italic">
-            &ldquo;Relax.&rdquo; <span className="font-sans text-cream/40 text-sm tracking-widest uppercase not-italic align-middle">— Lachlan</span>
+          Leung
+        </motion.p>
+
+        {/* Dates */}
+        <motion.p
+          custom={0.82}
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
+          className="font-sans text-sm mb-10"
+          style={{ color: '#d4a0a0', letterSpacing: '0.08em' }}
+        >
+          19 October 2008 &ndash; 7 January 2026
+        </motion.p>
+
+        {/* Quote */}
+        <motion.div
+          custom={1.05}
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
+          className="flex flex-col items-center gap-2"
+        >
+          <p
+            className="font-serif italic"
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', color: '#4a3728' }}
+          >
+            &ldquo;Relax.&rdquo;
           </p>
+          <span
+            className="font-sans text-xs tracking-widest uppercase"
+            style={{ color: '#8aaa8a', letterSpacing: '0.18em' }}
+          >
+            — Lachlan
+          </span>
         </motion.div>
       </div>
 
-      <div className="relative z-10 text-cream">
+      {/* Scroll cue */}
+      <div className="relative z-10 mt-4">
         <ScrollCue />
       </div>
+
+      {/* Subtle grain texture overlay for analog feel */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize:   '256px 256px',
+        }}
+      />
     </section>
   )
 }

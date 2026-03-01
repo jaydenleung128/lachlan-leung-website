@@ -6,23 +6,16 @@ export function ScrollCue() {
   return (
     <motion.div
       className="flex justify-center mt-12"
-      animate={{ y: [0, 8, 0] }}
-      transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+      animate={{ scale: [1, 1.2, 1] }}
+      transition={{ repeat: Infinity, duration: 2.0, ease: [0.43, 0.13, 0.23, 0.96] }}
       aria-hidden="true"
     >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-gold opacity-70"
+      <span
+        className="text-2xl select-none"
+        style={{ color: '#d4a0a0', filter: 'drop-shadow(0 2px 4px rgba(212,160,160,0.4))' }}
       >
-        <path d="M6 9l6 6 6-6" />
-      </svg>
+        ❤
+      </span>
     </motion.div>
   )
 }
