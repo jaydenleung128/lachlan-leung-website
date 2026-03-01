@@ -52,7 +52,7 @@ export function QuietZoneSection() {
         </motion.div>
 
         {/* Sage leaf decorations — subtle organic shapes */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Decorative corner leaf hint */}
           <div
             className="absolute -top-6 -left-8 pointer-events-none select-none opacity-20"
