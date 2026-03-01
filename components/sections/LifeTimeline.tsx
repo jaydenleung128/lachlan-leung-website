@@ -157,7 +157,7 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
     <div
       ref={railRef}
       className="overflow-x-auto"
-      style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+      style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', scrollSnapType: 'x mandatory' } as React.CSSProperties}
     >
       <div
         className="relative flex"
@@ -168,8 +168,8 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
           className="absolute pointer-events-none"
           style={{
             top: TITLE_H + DOT_AREA_H / 2,
-            left: RAIL_PAD,
-            right: RAIL_PAD,
+            left: RAIL_PAD + DOT_ITEM_W / 2,
+            right: RAIL_PAD + DOT_ITEM_W / 2,
             height: 1,
             background: 'rgba(74,55,40,0.12)',
           }}
@@ -183,7 +183,7 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
               ref={el => { dotRefs.current[event.id] = el }}
               onClick={() => onSelect(event.id)}
               className="relative flex flex-col items-center shrink-0"
-              style={{ width: DOT_ITEM_W, paddingBottom: 12 }}
+              style={{ width: DOT_ITEM_W, paddingBottom: 12, scrollSnapAlign: 'center' } as React.CSSProperties}
             >
               {/* Title area */}
               <div
@@ -349,64 +349,39 @@ function VariantB() {
 
   const handleSelect = (id: string) => {
     setSelectedId(id)
-    const rail  = railRef.current
-    const dot   = dotRefs.current[id]
+    const rail = railRef.current
+    const dot  = dotRefs.current[id]
     if (!rail || !dot) return
     const scrollTarget = Math.max(0, dot.offsetLeft + dot.offsetWidth / 2 - rail.offsetWidth / 2)
     rail.scrollTo({ left: scrollTarget, behavior: 'smooth' })
     setPointerLeft(dot.offsetLeft + dot.offsetWidth / 2 - scrollTarget)
   }
 
-  const wrapperRef      = useRef<HTMLDivElement>(null)
-  const isDragging      = useRef(false)
-  const hasCapture      = useRef(false)
-  const dragStartX      = useRef(0)
-  const dragStartScroll = useRef(0)
-  const dragDistance    = useRef(0)
-
-  const snapToNearest = () => {
+  // Sync selected state after native scroll settles (supports scrollend + debounce fallback)
+  useEffect(() => {
     const rail = railRef.current
     if (!rail) return
-    const railCenter = rail.scrollLeft + rail.offsetWidth / 2
-    let nearestId   = EVENTS[0].id
-    let nearestDist = Infinity
-    EVENTS.forEach(ev => {
-      const dot = dotRefs.current[ev.id]
-      if (!dot) return
-      const dist = Math.abs(dot.offsetLeft + dot.offsetWidth / 2 - railCenter)
-      if (dist < nearestDist) { nearestDist = dist; nearestId = ev.id }
-    })
-    handleSelect(nearestId)
-  }
 
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    isDragging.current      = true
-    hasCapture.current      = false
-    dragDistance.current    = 0
-    dragStartX.current      = e.clientX
-    dragStartScroll.current = railRef.current?.scrollLeft ?? 0
-  }
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging.current || !railRef.current) return
-    const dx = e.clientX - dragStartX.current
-    dragDistance.current = Math.abs(dx)
-    // Capture only once a real drag begins — keeps click events working on buttons
-    if (!hasCapture.current && dragDistance.current > 4) {
-      e.currentTarget.setPointerCapture(e.pointerId)
-      hasCapture.current = true
-      if (wrapperRef.current) wrapperRef.current.style.cursor = 'grabbing'
+    const syncNearest = () => {
+      const railCenter = rail.scrollLeft + rail.offsetWidth / 2
+      let nearestId   = EVENTS[0].id
+      let nearestDist = Infinity
+      EVENTS.forEach(ev => {
+        const dot = dotRefs.current[ev.id]
+        if (!dot) return
+        const dist = Math.abs(dot.offsetLeft + dot.offsetWidth / 2 - railCenter)
+        if (dist < nearestDist) { nearestDist = dist; nearestId = ev.id }
+      })
+      setSelectedId(nearestId)
+      const dot = dotRefs.current[nearestId]
+      if (dot) setPointerLeft(dot.offsetLeft + dot.offsetWidth / 2 - rail.scrollLeft)
     }
-    railRef.current.scrollLeft = dragStartScroll.current - dx
-  }
 
-  const onPointerUp = () => {
-    if (!isDragging.current) return
-    isDragging.current = false
-    hasCapture.current = false
-    if (wrapperRef.current) wrapperRef.current.style.cursor = 'grab'
-    if (dragDistance.current > 6) snapToNearest()
-  }
+    const onScroll = () => requestAnimationFrame(syncNearest)
+
+    rail.addEventListener('scroll', onScroll, { passive: true })
+    return () => rail.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handlePrev = () => { if (selectedIdx > 0) handleSelect(EVENTS[selectedIdx - 1].id) }
   const handleNext = () => { if (selectedIdx < EVENTS.length - 1) handleSelect(EVENTS[selectedIdx + 1].id) }
@@ -427,19 +402,13 @@ function VariantB() {
 
   return (
     <div>
-      {/* Rail — gradient fade edges + drag-to-scroll */}
+      {/* Rail — gradient fade edges, native scroll */}
       <div
-        ref={wrapperRef}
         style={{
-          cursor: 'grab',
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
           maskImage:        'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
           userSelect: 'none',
         } as React.CSSProperties}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
       >
         <Rail selectedId={selectedId} onSelect={handleSelect} railRef={railRef} dotRefs={dotRefs} />
       </div>
