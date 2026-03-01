@@ -264,9 +264,15 @@ export function HeroSection() {
       </div>
 
       {/* Scroll cue */}
-      <div className="relative z-10 mt-4">
+      <motion.div
+        custom={1.25}
+        initial="hidden"
+        animate="show"
+        variants={fadeUp}
+        className="relative z-10 mt-4"
+      >
         <ScrollCue />
-      </div>
+      </motion.div>
 
       {/* Subtle grain texture overlay for analog feel */}
       <div

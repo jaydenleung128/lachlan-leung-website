@@ -24,6 +24,18 @@ body {
   background-color: var(--color-parchment);
 }
 
+@keyframes heartFloat {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.3); }
+  25%  { opacity: 1; transform: translate(calc(-50% + calc(var(--dx) * 0.4)), calc(-50% - calc(var(--dy) * 0.25))) scale(1.15); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - var(--dy))) scale(0.55); }
+}
+
+@keyframes heartFloatHero {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.3); }
+  25%  { opacity: 1; transform: translate(calc(-50% + calc(var(--dx) * 0.4)), calc(-50% - calc(var(--dy) * 0.25))) scale(1.2); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - var(--dy))) scale(0.5); }
+}
+
 @utility prose-memorial {
   --tw-prose-body:     var(--color-brown);
   --tw-prose-headings: var(--color-brown);
