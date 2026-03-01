@@ -40,7 +40,7 @@ function getInitials(name: string): string {
 
 export function TributesSection({ tributes }: TributesSectionProps) {
   return (
-    <SectionWrapper id="tributes" className="py-14 md:py-24 px-4 md:px-6" style={{ background: '#f5efe6' }}>
+    <SectionWrapper id="tributes" className="py-14 md:py-24 px-4 md:px-6" style={{ background: '#faf6f0' }}>
       <div className="max-w-3xl mx-auto">
 
         {/* Heading */}
