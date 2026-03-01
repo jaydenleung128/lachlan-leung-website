@@ -37,4 +37,4 @@ bun.lockb
 .playwright-cli/
 
 # nested worktrees
-.worktrees/
+.claude/worktrees/
