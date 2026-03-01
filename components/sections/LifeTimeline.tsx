@@ -377,10 +377,17 @@ function VariantB() {
       if (dot) setPointerLeft(dot.offsetLeft + dot.offsetWidth / 2 - rail.scrollLeft)
     }
 
-    const onScroll = () => requestAnimationFrame(syncNearest)
+    let debounceTimer: ReturnType<typeof setTimeout>
+    const onScroll = () => {
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(syncNearest, 20)
+    }
 
     rail.addEventListener('scroll', onScroll, { passive: true })
-    return () => rail.removeEventListener('scroll', onScroll)
+    return () => {
+      rail.removeEventListener('scroll', onScroll)
+      clearTimeout(debounceTimer)
+    }
   }, [])
 
   const handlePrev = () => { if (selectedIdx > 0) handleSelect(EVENTS[selectedIdx - 1].id) }
