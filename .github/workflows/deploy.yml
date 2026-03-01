@@ -26,7 +26,6 @@ jobs:
       - run: bun run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          NEXT_BASE_PATH: /lachlan-leung-website
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
