@@ -313,6 +313,7 @@ function VariantB() {
   const railRef = useRef<HTMLDivElement>(null)
   const dotRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [pointerLeft, setPointerLeft] = useState<number | null>(null)
+  const touchStartX = useRef<number>(0)
   const selected = EVENTS.find(e => e.id === selectedId)!
   const selectedIdx = EVENTS.findIndex(e => e.id === selectedId)
 
@@ -362,6 +363,15 @@ function VariantB() {
   const handlePrev = () => { if (selectedIdx > 0) handleSelect(EVENTS[selectedIdx - 1].id) }
   const handleNext = () => { if (selectedIdx < EVENTS.length - 1) handleSelect(EVENTS[selectedIdx + 1].id) }
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    if (dx > 40) handlePrev()
+    else if (dx < -40) handleNext()
+  }
+
   useEffect(() => {
     const t = setTimeout(() => handleSelect(selectedId), 60)
     return () => clearTimeout(t)
@@ -410,26 +420,31 @@ function VariantB() {
           />
         )}
 
-        <div
-          className="rounded-2xl overflow-hidden"
-          style={{
-            marginTop: 9,
-            background: 'rgba(255,255,255,0.78)',
-            border: '1px solid rgba(212,160,160,0.2)',
-            boxShadow: '0 4px 28px rgba(74,55,40,0.07)',
-          }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedId}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.24, ease: [0.43, 0.13, 0.23, 0.96] }}
-            >
-              <EventContent event={selected} />
-            </motion.div>
-          </AnimatePresence>
+        {/* Card + nav arrows */}
+        <div className="relative" style={{ marginTop: 9 }}>
+          <div
+            className="rounded-2xl overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            style={{
+              background: 'rgba(255,255,255,0.78)',
+              border: '1px solid rgba(212,160,160,0.2)',
+              boxShadow: '0 4px 28px rgba(74,55,40,0.07)',
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedId}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.24, ease: [0.43, 0.13, 0.23, 0.96] }}
+              >
+                <EventContent event={selected} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
         </div>
       </div>
     </div>
