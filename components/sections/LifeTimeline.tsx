@@ -13,7 +13,6 @@ interface TimelineEvent {
   title: string
   location?: string
   body: string
-  photos?: string[]
   youtubeId?: string
 }
 
@@ -288,24 +287,6 @@ function EventContent({ event }: { event: TimelineEvent }) {
       >
         {event.body}
       </p>
-
-      {event.photos && event.photos.length > 0 && (
-        <div
-          className="flex gap-3 mt-4 overflow-x-auto -mx-5 md:-mx-6 px-5 md:px-6 pb-1"
-          style={{ scrollbarWidth: 'none' } as React.CSSProperties}
-        >
-          {event.photos.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              className="shrink-0 rounded-lg object-cover"
-              style={{ height: 140, width: 'auto', maxWidth: 210, boxShadow: '0 4px 14px rgba(74,55,40,0.12)' }}
-              loading="lazy"
-            />
-          ))}
-        </div>
-      )}
 
       {event.youtubeId && (
         <div
