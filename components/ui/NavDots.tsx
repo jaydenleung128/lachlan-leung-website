@@ -7,9 +7,8 @@ const SECTIONS = [
   { id: 'hero',       label: 'I',   name: 'Home' },
   { id: 'about',      label: 'II',  name: 'About' },
   { id: 'player',     label: 'III', name: 'Player' },
-  { id: 'gallery',    label: 'IV',  name: 'Gallery' },
-  { id: 'tributes',   label: 'V',   name: 'Tributes' },
-  { id: 'quiet-zone', label: 'VI',  name: 'Quiet Zone' },
+  { id: 'tributes',   label: 'IV',  name: 'Tributes' },
+  { id: 'quiet-zone', label: 'V',   name: 'Quiet Zone' },
 ]
 
 export function NavDots() {

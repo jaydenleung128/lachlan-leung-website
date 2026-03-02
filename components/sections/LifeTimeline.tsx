@@ -27,7 +27,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'First National Gold',
     location: 'Australia',
     body: 'Gold medallist in the Under 11 Boys Teams event at the Australian Championships — his very first national gold medal, aged just 9 years old.',
-    photos: ['/images/gallery/seoul_library.jpg', '/images/gallery/seoul_deer_park.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
   {
@@ -37,7 +36,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Junior Open Gold',
     location: 'New South Wales',
     body: 'Gold medallist in the Under 11 Boys Singles, with a bronze in Mixed Doubles at the NSW Junior Open Championships.',
-    photos: ['/images/gallery/seoul_deer_park.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
   {
@@ -47,7 +45,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'MP Sporting Award',
     location: 'Sydney',
     body: 'Awarded the 2018–2023 David Coleman MP (Banks) Outstanding Sporting Achievement Award — recognising six years of extraordinary table tennis achievements.',
-    photos: ['/images/gallery/seoul_library.jpg', '/images/gallery/seoul_deer_park.jpg'],
   },
   {
     id: 'tta-canberra-2024',
@@ -56,7 +53,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'TTA Canberra Gold',
     location: 'Canberra, ACT',
     body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Canberra.',
-    photos: ['/images/gallery/seoul_library.jpg'],
   },
   {
     id: 'tta-mandurah-2024',
@@ -65,7 +61,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'TTA Mandurah Gold',
     location: 'Mandurah, WA',
     body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Mandurah, Western Australia.',
-    photos: ['/images/gallery/seoul_deer_park.jpg'],
   },
   {
     id: 'nsw-junior-closed-2024',
@@ -74,7 +69,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Junior Closed Gold',
     location: 'New South Wales',
     body: "Gold medallist in the Under 21 Men's Singles at the NSW Junior Closed Championships, plus silver at the NSW Open.",
-    photos: ['/images/gallery/seoul_deer_park.jpg', '/images/gallery/seoul_library.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
   {
@@ -84,7 +78,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'Australian Nationals Gold',
     location: 'Australia',
     body: 'Gold medallist in the Australian Under 17 Boys Teams event at the national championships.',
-    photos: ['/images/gallery/seoul_library.jpg', '/images/gallery/seoul_deer_park.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
   {
@@ -94,7 +87,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'Level 1 Coaching',
     location: 'Australia',
     body: 'Achieved Table Tennis Australia Level 1 coaching accreditation — beginning to give back to the sport and younger players who looked up to him.',
-    photos: ['/images/gallery/seoul_deer_park.jpg'],
   },
   {
     id: 'diamond-award-2024',
@@ -103,7 +95,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'Diamond Award',
     location: 'Menai, NSW',
     body: "Recipient of the Diamond Award — Menai High School's highest honour for student achievement. Recognised for excellence in both academics and sport.",
-    photos: ['/images/gallery/seoul_library.jpg'],
   },
   {
     id: 'school-shield-2025',
@@ -112,7 +103,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Schools Shield Gold',
     location: 'New South Wales',
     body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
-    photos: ['/images/gallery/seoul_deer_park.jpg', '/images/gallery/seoul_library.jpg'],
   },
   {
     id: 'ranked-2025',
@@ -121,7 +111,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'Career-High Rankings',
     location: 'Australia',
     body: 'Reached his career-high rankings — 5th in Australia in the TTA Under 17 Boys category, and 32nd nationally in Open Men, competing against players of all ages.',
-    photos: ['/images/gallery/seoul_library.jpg', '/images/gallery/seoul_deer_park.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
   {
@@ -131,7 +120,6 @@ const EVENTS: TimelineEvent[] = [
     title: 'Family Trip to Korea',
     location: 'Seoul, South Korea',
     body: 'A cherished trip to South Korea with his family — visiting the Seoul National Library, the Deer Park, and exploring the city he loved. One of his final adventures.',
-    photos: ['/images/gallery/seoul_library.jpg', '/images/gallery/seoul_deer_park.jpg'],
     youtubeId: 'DZrig1XNVxA',
   },
 ]
