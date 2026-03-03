@@ -220,7 +220,7 @@ export function HeroSection() {
           variants={fadeUp}
           className="font-serif tracking-widest uppercase mb-6"
           style={{
-            fontSize:      'clamp(1.2rem, 3.5vw, 2rem)',
+            fontSize:      'clamp(2.2rem, 4.5vw, 3.0rem)',
             color:         '#7a6558',
             letterSpacing: '0.3em',
           }}
@@ -234,8 +234,8 @@ export function HeroSection() {
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="font-sans text-sm mb-10"
-          style={{ color: '#d4a0a0', letterSpacing: '0.08em' }}
+          className="font-sans mb-10"
+          style={{ color: '#d4a0a0', letterSpacing: '0.08em', fontSize: '1.275rem' }}
         >
           19 October 2008 &ndash; 7 January 2026
         </motion.p>
