@@ -16,6 +16,15 @@ const relationshipAccents: Record<string, string> = {
   Friend:   '#a0b4d4',
 }
 
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map(n => n[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
+}
+
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (i: number) => ({
@@ -27,15 +36,6 @@ const cardVariants: Variants = {
       ease:     [0.43, 0.13, 0.23, 0.96],
     },
   }),
-}
-
-function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map(n => n[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase()
 }
 
 export function TributesSection({ tributes }: TributesSectionProps) {
