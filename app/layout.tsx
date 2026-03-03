@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://lachlanleung.com'),
   title: 'Lachlan Leung — In Loving Memory',
   description: 'A celebration of the life of Lachlan Leung — Year 12 student, table tennis champion, and beloved son. 19 October 2008 – 7 January 2026.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Lachlan Leung — In Loving Memory',
     description: 'A celebration of the life of Lachlan Leung — Year 12 student, table tennis champion, and beloved son. 19 October 2008 – 7 January 2026.',

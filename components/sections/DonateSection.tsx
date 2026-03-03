@@ -27,7 +27,7 @@ export function DonateSection() {
 
         <motion.h2
           initial={HIDDEN} whileInView={VISIBLE} viewport={VIEWPORT}
-          transition={{ duration: 1.0, delay: 0.25, ease: EASE }}
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
           className="font-serif italic leading-tight mb-6"
           style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#4a3728', letterSpacing: '-0.01em' }}
         >

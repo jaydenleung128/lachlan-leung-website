@@ -400,28 +400,8 @@ function VariantB() {
       </div>
 
       <div className="relative mx-4">
-        {/* Triangle caret pointing up to the active dot */}
-        {pointerLeft !== null && (
-          <motion.div
-            animate={{ left: pointerLeft }}
-            transition={{ type: 'spring', stiffness: 320, damping: 30 }}
-            style={{
-              position: 'absolute',
-              top: 0,
-              transform: 'translateX(-50%)',
-              width: 0,
-              height: 0,
-              borderLeft: '8px solid transparent',
-              borderRight: '8px solid transparent',
-              borderBottom: '9px solid rgba(255,255,255,0.9)',
-              zIndex: 2,
-              filter: 'drop-shadow(0 -2px 2px rgba(74,55,40,0.07))',
-            }}
-          />
-        )}
-
         {/* Card + nav arrows */}
-        <div className="relative" style={{ marginTop: 9 }}>
+        <div className="relative">
           <div
             className="rounded-2xl overflow-hidden"
             onTouchStart={handleTouchStart}

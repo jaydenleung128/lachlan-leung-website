@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <!-- Richer Rose Gradient (Better contrast) -->
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dfb0b0" />
+      <stop offset="50%" style="stop-color:#d4a0a0" />
+      <stop offset="100%" style="stop-color:#c88484" />
+    </linearGradient>
+    
+    <!-- Warm Wood Gradient -->
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6d5442" />
+      <stop offset="100%" style="stop-color:#4a3728" />
+    </linearGradient>
+
+    <!-- Highlight for more realism -->
+    <radialGradient id="highlight" cx="30%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background container to ensure heart shape is distinct -->
+  <g transform="translate(64, 60)">
+    
+    <!-- Right Bat: Rotated and positioned to form the right half of the heart -->
+    <g transform="rotate(35) translate(15, -10)">
+      <!-- Handle -->
+      <rect x="-6" y="25" width="12" height="35" rx="3" fill="url(#woodGrad)" stroke="#3a291d" stroke-width="1.5" />
+      <!-- Paddle Face -->
+      <path d="M-28,0 C-28,-40 28,-40 28,0 C28,25 0,35 0,35 C0,35 -28,25 -28,0 Z" 
+            fill="url(#roseGrad)" stroke="#4a3728" stroke-width="2" />
+      <path d="M-28,0 C-28,-40 28,-40 28,0 C28,25 0,35 0,35 C0,35 -28,25 -28,0 Z" 
+            fill="url(#highlight)" />
+    </g>
+
+    <!-- Left Bat: Rotated and positioned to form the left half of the heart -->
+    <g transform="rotate(-35) translate(-15, -10)">
+      <!-- Handle -->
+      <rect x="-6" y="25" width="12" height="35" rx="3" fill="url(#woodGrad)" stroke="#3a291d" stroke-width="1.5" />
+      <!-- Paddle Face -->
+      <path d="M-28,0 C-28,-40 28,-40 28,0 C28,25 0,35 0,35 C0,35 -28,25 -28,0 Z" 
+            fill="url(#roseGrad)" stroke="#4a3728" stroke-width="2" />
+      <path d="M-28,0 C-28,-40 28,-40 28,0 C28,25 0,35 0,35 C0,35 -28,25 -28,0 Z" 
+            fill="url(#highlight)" />
+    </g>
+
+  </g>
+</svg>
