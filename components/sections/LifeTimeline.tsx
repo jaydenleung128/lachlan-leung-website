@@ -8,7 +8,7 @@ import { SectionWrapper } from '@/components/ui/SectionWrapper'
 
 interface TimelineEvent {
   id: string
-  year: number
+  date: string  // "YYYY-MM-DD"
   category: 'tournament' | 'holiday' | 'milestone'
   title: string
   location?: string
@@ -16,96 +16,21 @@ interface TimelineEvent {
   youtubeId?: string
 }
 
-// ─── Data (chronological — oldest first) ──────────────────────────────────────
+// ─── Data (newest first) ──────────────────────────────────────────────────────
 
 const EVENTS: TimelineEvent[] = [
   {
-    id: 'aus-u11-2018',
-    year: 2018,
-    category: 'tournament',
-    title: 'First National Gold',
-    location: 'Australia',
-    body: 'Gold medallist in the Under 11 Boys Teams event at the Australian Championships — his very first national gold medal, aged just 9 years old.',
+    id: 'korea-2025',
+    date: '2025-01-01',
+    category: 'holiday',
+    title: 'Family Trip to Korea',
+    location: 'Seoul, South Korea',
+    body: 'A cherished trip to South Korea with his family — visiting the Seoul National Library, the Deer Park, and exploring the city he loved. One of his final adventures.',
     youtubeId: 'DZrig1XNVxA',
-  },
-  {
-    id: 'nsw-junior-open-2019',
-    year: 2019,
-    category: 'tournament',
-    title: 'NSW Junior Open Gold',
-    location: 'New South Wales',
-    body: 'Gold medallist in the Under 11 Boys Singles, with a bronze in Mixed Doubles at the NSW Junior Open Championships.',
-    youtubeId: 'DZrig1XNVxA',
-  },
-  {
-    id: 'david-coleman-2023',
-    year: 2023,
-    category: 'milestone',
-    title: 'MP Sporting Award',
-    location: 'Sydney',
-    body: 'Awarded the 2018–2023 David Coleman MP (Banks) Outstanding Sporting Achievement Award — recognising six years of extraordinary table tennis achievements.',
-  },
-  {
-    id: 'tta-canberra-2024',
-    year: 2024,
-    category: 'tournament',
-    title: 'TTA Canberra Gold',
-    location: 'Canberra, ACT',
-    body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Canberra.',
-  },
-  {
-    id: 'tta-mandurah-2024',
-    year: 2024,
-    category: 'tournament',
-    title: 'TTA Mandurah Gold',
-    location: 'Mandurah, WA',
-    body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Mandurah, Western Australia.',
-  },
-  {
-    id: 'nsw-junior-closed-2024',
-    year: 2024,
-    category: 'tournament',
-    title: 'NSW Junior Closed Gold',
-    location: 'New South Wales',
-    body: "Gold medallist in the Under 21 Men's Singles at the NSW Junior Closed Championships, plus silver at the NSW Open.",
-    youtubeId: 'DZrig1XNVxA',
-  },
-  {
-    id: 'aus-nationals-2024',
-    year: 2024,
-    category: 'tournament',
-    title: 'Australian Nationals Gold',
-    location: 'Australia',
-    body: 'Gold medallist in the Australian Under 17 Boys Teams event at the national championships.',
-    youtubeId: 'DZrig1XNVxA',
-  },
-  {
-    id: 'coaching-2024',
-    year: 2024,
-    category: 'milestone',
-    title: 'Level 1 Coaching',
-    location: 'Australia',
-    body: 'Achieved Table Tennis Australia Level 1 coaching accreditation — beginning to give back to the sport and younger players who looked up to him.',
-  },
-  {
-    id: 'diamond-award-2024',
-    year: 2024,
-    category: 'milestone',
-    title: 'Diamond Award',
-    location: 'Menai, NSW',
-    body: "Recipient of the Diamond Award — Menai High School's highest honour for student achievement. Recognised for excellence in both academics and sport.",
-  },
-  {
-    id: 'school-shield-2025',
-    year: 2025,
-    category: 'tournament',
-    title: 'NSW Schools Shield Gold',
-    location: 'New South Wales',
-    body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
   },
   {
     id: 'ranked-2025',
-    year: 2025,
+    date: '2025-01-01',
     category: 'tournament',
     title: 'Career-High Rankings',
     location: 'Australia',
@@ -113,17 +38,103 @@ const EVENTS: TimelineEvent[] = [
     youtubeId: 'DZrig1XNVxA',
   },
   {
-    id: 'korea-2025',
-    year: 2025,
-    category: 'holiday',
-    title: 'Family Trip to Korea',
-    location: 'Seoul, South Korea',
-    body: 'A cherished trip to South Korea with his family — visiting the Seoul National Library, the Deer Park, and exploring the city he loved. One of his final adventures.',
+    id: 'school-shield-2025',
+    date: '2025-01-01',
+    category: 'tournament',
+    title: 'NSW Schools Shield Gold',
+    location: 'New South Wales',
+    body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
+  },
+  {
+    id: 'diamond-award-2024',
+    date: '2024-01-01',
+    category: 'milestone',
+    title: 'Diamond Award',
+    location: 'Menai, NSW',
+    body: "Recipient of the Diamond Award — Menai High School's highest honour for student achievement. Recognised for excellence in both academics and sport.",
+  },
+  {
+    id: 'coaching-2024',
+    date: '2024-01-01',
+    category: 'milestone',
+    title: 'Level 1 Coaching',
+    location: 'Australia',
+    body: 'Achieved Table Tennis Australia Level 1 coaching accreditation — beginning to give back to the sport and younger players who looked up to him.',
+  },
+  {
+    id: 'aus-nationals-2024',
+    date: '2024-01-01',
+    category: 'tournament',
+    title: 'Australian Nationals Gold',
+    location: 'Australia',
+    body: 'Gold medallist in the Australian Under 17 Boys Teams event at the national championships.',
+    youtubeId: 'DZrig1XNVxA',
+  },
+  {
+    id: 'nsw-junior-closed-2024',
+    date: '2024-01-01',
+    category: 'tournament',
+    title: 'NSW Junior Closed Gold',
+    location: 'New South Wales',
+    body: "Gold medallist in the Under 21 Men's Singles at the NSW Junior Closed Championships, plus silver at the NSW Open.",
+    youtubeId: 'DZrig1XNVxA',
+  },
+  {
+    id: 'tta-mandurah-2024',
+    date: '2024-01-01',
+    category: 'tournament',
+    title: 'TTA Mandurah Gold',
+    location: 'Mandurah, WA',
+    body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Mandurah, Western Australia.',
+  },
+  {
+    id: 'tta-canberra-2024',
+    date: '2024-01-01',
+    category: 'tournament',
+    title: 'TTA Canberra Gold',
+    location: 'Canberra, ACT',
+    body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Canberra.',
+  },
+  {
+    id: 'david-coleman-2023',
+    date: '2023-01-01',
+    category: 'milestone',
+    title: 'MP Sporting Award',
+    location: 'Sydney',
+    body: 'Awarded the 2018–2023 David Coleman MP (Banks) Outstanding Sporting Achievement Award — recognising six years of extraordinary table tennis achievements.',
+  },
+  {
+    id: 'nsw-junior-open-2019',
+    date: '2019-01-01',
+    category: 'tournament',
+    title: 'NSW Junior Open Gold',
+    location: 'New South Wales',
+    body: 'Gold medallist in the Under 11 Boys Singles, with a bronze in Mixed Doubles at the NSW Junior Open Championships.',
+    youtubeId: 'DZrig1XNVxA',
+  },
+  {
+    id: 'aus-u11-2018',
+    date: '2018-01-01',
+    category: 'tournament',
+    title: 'First National Gold',
+    location: 'Australia',
+    body: 'Gold medallist in the Under 11 Boys Teams event at the Australian Championships — his very first national gold medal, aged just 9 years old.',
     youtubeId: 'DZrig1XNVxA',
   },
 ]
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
+
+const BIRTH_DATE = { year: 2008, month: 10, day: 19 } // 19 Oct 2008
+
+const toAge = (dateStr: string): string => {
+  const [y, m, d] = dateStr.split('-').map(Number)
+  let age = y - BIRTH_DATE.year
+  if (m < BIRTH_DATE.month || (m === BIRTH_DATE.month && d < BIRTH_DATE.day)) age--
+  return `${age}yr`
+}
+
+const yearFromDate = (dateStr: string) => dateStr.slice(0, 4)
 
 const DOT_ITEM_W = 84   // px width per event column
 const TITLE_H    = 52   // px reserved above each dot for its label
@@ -179,7 +190,7 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
                   display: 'flex',
                   alignItems: 'flex-end',
                   justifyContent: 'center',
-                  paddingBottom: 6,
+                  paddingBottom: 10,
                 }}
               >
                 <motion.span
@@ -244,17 +255,18 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
                 />
               </div>
 
-              {/* Year */}
+              {/* Year + Age */}
               <motion.span
                 animate={{
                   color: isSelected ? '#4a3728' : 'rgba(74,55,40,0.28)',
                   fontWeight: isSelected ? 600 : 400,
                 }}
                 transition={{ duration: 0.15 }}
-                className="font-sans mt-1"
-                style={{ fontSize: '0.6rem', letterSpacing: '0.06em' }}
+                className="font-sans text-center leading-tight"
+                style={{ fontSize: '0.6rem', letterSpacing: '0.06em', display: 'block', marginTop: 10 }}
               >
-                {event.year}
+                <span style={{ display: 'block' }}>{yearFromDate(event.date)}</span>
+                <span style={{ display: 'block' }}>{toAge(event.date)}</span>
               </motion.span>
             </button>
           )
@@ -273,7 +285,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
         className="font-sans uppercase mb-1"
         style={{ fontSize: '0.6rem', color: 'rgba(74,55,40,0.4)', letterSpacing: '0.18em', fontWeight: 600 }}
       >
-        {event.year}{event.location ? ` · ${event.location}` : ''}
+        {yearFromDate(event.date)}{event.location ? ` · ${event.location}` : ''}
       </p>
       <h3
         className="font-serif italic leading-tight mb-3"
@@ -309,7 +321,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
 // ─── Timeline ─────────────────────────────────────────────────────────────────
 
 function VariantB() {
-  const [selectedId, setSelectedId] = useState(EVENTS[EVENTS.length - 1].id)
+  const [selectedId, setSelectedId] = useState(EVENTS[0].id)
   const railRef = useRef<HTMLDivElement>(null)
   const dotRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [pointerLeft, setPointerLeft] = useState<number | null>(null)
