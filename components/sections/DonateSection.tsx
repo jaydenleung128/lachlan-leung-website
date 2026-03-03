@@ -57,8 +57,8 @@ export function DonateSection() {
         <motion.p
           initial={HIDDEN} whileInView={VISIBLE} viewport={VIEWPORT}
           transition={{ duration: 1.0, delay: 0.6, ease: EASE }}
-          className="font-sans leading-relaxed mb-14"
-          style={{ color: 'rgba(122,101,88,0.6)', fontSize: '0.84rem' }}
+          className="font-sans text-sm leading-relaxed mb-14"
+          style={{ color: 'rgba(122,101,88,0.6)' }}
         >
           A national initiative developing liquid biopsy technology — so that one day,
           no family has to say goodbye too soon.

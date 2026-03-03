@@ -92,7 +92,7 @@ export function NavDots() {
                 className="leading-none transition-all duration-500"
                 style={{
                   fontFamily:    'var(--font-lora), Georgia, serif',
-                  fontSize:      isActive ? '0.95rem' : '0.78rem',
+                  fontSize:      isActive ? '1rem' : '0.75rem',
                   fontWeight:    isActive ? 600 : 400,
                   color:         isActive ? '#c47a7a' : 'rgba(74,55,40,0.5)',
                   letterSpacing: '0.05em',
@@ -128,7 +128,7 @@ export function NavDots() {
               style={{
                 background:    isActive ? 'rgba(212,160,160,0.25)' : 'transparent',
                 fontFamily:    'var(--font-lora), Georgia, serif',
-                fontSize:      '0.7rem',
+                fontSize:      '0.75rem',
                 fontWeight:    isActive ? 600 : 400,
                 color:         isActive ? '#f0d8d8' : 'rgba(250,246,240,0.45)',
                 letterSpacing: '0.05em',

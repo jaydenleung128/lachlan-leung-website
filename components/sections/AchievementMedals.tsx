@@ -31,7 +31,7 @@ const PILL_BUTTON_STYLE: React.CSSProperties = {
   padding:       '6px 20px',
   cursor:        'pointer',
   fontFamily:    'sans-serif',
-  fontSize:      '0.7rem',
+  fontSize:      '0.75rem',
   color:         '#d4a0a0',
   letterSpacing: '0.1em',
 }
@@ -84,7 +84,7 @@ function AchievementItem({ item, isLast }: { item: Achievement; isLast: boolean 
           <span
             className="font-sans"
             style={{
-              fontSize:        '0.55rem',
+              fontSize:        '0.6rem',
               color:           medalColor,
               textTransform:   'uppercase',
               letterSpacing:   '0.18em',
@@ -102,10 +102,9 @@ function AchievementItem({ item, isLast }: { item: Achievement; isLast: boolean 
 
       {/* Title */}
       <p
-        className="font-serif"
+        className="font-serif text-sm"
         style={{
           fontStyle:  'italic',
-          fontSize:   '0.9rem',
           color:      '#4a3728',
           marginTop:  4,
           lineHeight: 1.4,
@@ -116,10 +115,9 @@ function AchievementItem({ item, isLast }: { item: Achievement; isLast: boolean 
 
       {/* Description */}
       <p
-        className="font-serif"
+        className="font-serif text-sm"
         style={{
           fontStyle:   'italic',
-          fontSize:    '0.82rem',
           color:       'rgba(74,55,40,0.45)',
           marginTop:   2,
           lineHeight:  1.6,

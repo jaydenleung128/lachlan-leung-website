@@ -11,6 +11,9 @@
 
   --font-serif: var(--font-lora), Georgia, serif;
   --font-sans:  var(--font-nunito), system-ui, sans-serif;
+
+  /* Custom text sizes */
+  --text-micro: 0.6rem; /* 9.6px — tiny labels, badges, rail text */
 }
 
 html {

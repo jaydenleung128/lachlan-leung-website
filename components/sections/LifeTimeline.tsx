@@ -190,7 +190,7 @@ function Rail({ selectedId, onSelect, railRef, dotRefs }: RailProps) {
                   transition={{ duration: 0.18 }}
                   className="font-sans text-center leading-tight"
                   style={{
-                    fontSize: '0.57rem',
+                    fontSize: '0.6rem',
                     letterSpacing: '0.01em',
                     maxWidth: DOT_ITEM_W - 6,
                     display: 'block',
@@ -271,7 +271,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
     <div className="p-5 md:p-6">
       <p
         className="font-sans uppercase mb-1"
-        style={{ fontSize: '0.58rem', color: 'rgba(74,55,40,0.4)', letterSpacing: '0.18em', fontWeight: 600 }}
+        style={{ fontSize: '0.6rem', color: 'rgba(74,55,40,0.4)', letterSpacing: '0.18em', fontWeight: 600 }}
       >
         {event.year}{event.location ? ` · ${event.location}` : ''}
       </p>
@@ -282,8 +282,8 @@ function EventContent({ event }: { event: TimelineEvent }) {
         {event.title}
       </h3>
       <p
-        className="font-sans leading-relaxed"
-        style={{ color: '#7a6558', fontSize: '0.875rem' }}
+        className="font-sans text-sm leading-relaxed"
+        style={{ color: '#7a6558' }}
       >
         {event.body}
       </p>

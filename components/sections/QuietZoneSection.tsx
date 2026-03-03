@@ -46,7 +46,7 @@ export function QuietZoneSection() {
           {/* Decorative sage separator */}
           <div className="flex items-center gap-4 mt-10 mb-0">
             <div className="flex-1 h-px" style={{ background: 'rgba(138,170,138,0.3)' }} />
-            <span style={{ color: '#8aaa8a', fontSize: 18 }}>❧</span>
+            <span style={{ color: '#8aaa8a', fontSize: '1.125rem' }}>❧</span>
             <div className="flex-1 h-px" style={{ background: 'rgba(138,170,138,0.3)' }} />
           </div>
         </motion.div>
@@ -56,14 +56,14 @@ export function QuietZoneSection() {
           {/* Decorative corner leaf hint */}
           <div
             className="absolute -top-6 -left-8 pointer-events-none select-none opacity-20"
-            style={{ fontSize: 56, color: '#8aaa8a', transform: 'rotate(-20deg)' }}
+            style={{ fontSize: '3.5rem', color: '#8aaa8a', transform: 'rotate(-20deg)' }}
             aria-hidden="true"
           >
             ❧
           </div>
           <div
             className="absolute -bottom-6 -right-8 pointer-events-none select-none opacity-15"
-            style={{ fontSize: 48, color: '#8aaa8a', transform: 'rotate(140deg)' }}
+            style={{ fontSize: '3rem', color: '#8aaa8a', transform: 'rotate(140deg)' }}
             aria-hidden="true"
           >
             ❧
