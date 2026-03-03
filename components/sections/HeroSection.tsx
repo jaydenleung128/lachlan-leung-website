@@ -235,7 +235,7 @@ export function HeroSection() {
           animate="show"
           variants={fadeUp}
           className="font-sans mb-10"
-          style={{ color: '#d4a0a0', letterSpacing: '0.08em', fontSize: '1.275rem' }}
+          style={{ color: '#d4a0a0', letterSpacing: '0.08em', fontSize: '1.075rem' }}
         >
           19 October 2008 &ndash; 7 January 2026
         </motion.p>
