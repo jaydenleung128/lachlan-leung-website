@@ -183,8 +183,8 @@ export function HeroSection() {
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="font-sans text-sm tracking-widest mb-8 italic"
-          style={{ color: '#8aaa8a', letterSpacing: '0.18em' }}
+          className="font-sans tracking-widest mb-8 italic"
+          style={{ color: '#8aaa8a', letterSpacing: '0.18em', fontSize: '1.075rem' }}
         >
           in loving memory
         </motion.p>
