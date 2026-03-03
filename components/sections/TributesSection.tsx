@@ -11,6 +11,9 @@ interface TributesSectionProps {
 
 const relationshipAccents: Record<string, string> = {
   Family:   '#d4a0a0',
+  Mum:      '#d4a0a0',
+  Dad:      '#d4a0a0',
+  Brother:  '#a0b4d4',
   Teammate: '#8aaa8a',
   Coach:    '#c4a882',
   Friend:   '#a0b4d4',
