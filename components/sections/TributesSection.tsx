@@ -1,13 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import type { Variants } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import type { TributePost } from '@/types'
-
-interface TributesSectionProps {
-  tributes: TributePost[]
-}
 
 const relationshipAccents: Record<string, string> = {
   Family:   '#d4a0a0',
@@ -19,35 +15,57 @@ const relationshipAccents: Record<string, string> = {
   Friend:   '#a0b4d4',
 }
 
-function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map(n => n[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase()
+const closings: Record<string, string> = {
+  Mum:      'With all my love,',
+  Dad:      'With all my love,',
+  Brother:  'With love,',
+  Family:   'With love,',
+  Friend:   'Fondly,',
+  Teammate: 'In memory,',
+  Coach:    'In memory,',
 }
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay:    i * 0.12,
-      duration: 0.8,
-      ease:     [0.43, 0.13, 0.23, 0.96],
-    },
-  }),
+const DRAG_THRESHOLD = 50
+
+interface TributesSectionProps {
+  tributes: TributePost[]
 }
 
 export function TributesSection({ tributes }: TributesSectionProps) {
+  const [[current, direction], setCurrent] = useState([0, 0])
+
+  if (tributes.length === 0) {
+    return (
+      <SectionWrapper id="tributes" className="py-14 md:py-24 px-4 md:px-6" style={{ background: '#faf6f0' }}>
+        <p className="font-sans text-center py-16 italic" style={{ color: '#b09080' }}>
+          Tributes will appear here soon.
+        </p>
+      </SectionWrapper>
+    )
+  }
+
+  const paginate = (newDir: number) => {
+    const next = current + newDir
+    if (next < 0 || next >= tributes.length) return
+    setCurrent([next, newDir])
+  }
+
+  const tribute = tributes[current]
+  const accent  = relationshipAccents[tribute.frontmatter.relationship] ?? '#d4a0a0'
+  const closing = closings[tribute.frontmatter.relationship] ?? 'With love,'
+
+  const variants = {
+    enter:  (dir: number) => ({ x: dir > 0 ? '60%' : '-60%', opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit:   (dir: number) => ({ x: dir > 0 ? '-60%' : '60%', opacity: 0 }),
+  }
+
   return (
-    <SectionWrapper id="tributes" className="py-14 md:py-24 px-4 md:px-6" style={{ background: '#faf6f0' }}>
-      <div className="max-w-3xl mx-auto">
+    <SectionWrapper id="tributes" className="py-14 md:py-24" style={{ background: '#faf6f0' }}>
+      <div className="max-w-2xl mx-auto px-4 md:px-6">
 
         {/* Heading */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <p
             className="font-sans text-xs tracking-widest uppercase mb-3 italic"
             style={{ color: '#8aaa8a', letterSpacing: '0.2em' }}
@@ -66,106 +84,190 @@ export function TributesSection({ tributes }: TributesSectionProps) {
           />
         </div>
 
-        {tributes.length === 0 ? (
-          <p
-            className="font-sans text-center py-16 italic"
-            style={{ color: '#b09080' }}
-          >
-            Tributes will appear here soon.
-          </p>
-        ) : (
-          <div className="space-y-8">
-            {tributes.map((tribute, i) => {
-              const accent = relationshipAccents[tribute.frontmatter.relationship] ?? '#d4a0a0'
+        {/* Letter */}
+        <div style={{ position: 'relative', overflow: 'hidden' }}>
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.article
+              key={tribute.slug}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: [0.43, 0.13, 0.23, 0.96] }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -DRAG_THRESHOLD) paginate(1)
+                else if (info.offset.x > DRAG_THRESHOLD) paginate(-1)
+              }}
+              style={{
+                cursor: 'grab',
+                borderRadius: 16,
+                background: '#faf6f0',
+                boxShadow: '0 2px 8px rgba(74,55,40,0.07), 0 12px 36px rgba(74,55,40,0.11), 0 1px 0 rgba(255,255,255,0.9) inset',
+                border: '1px solid rgba(212,160,160,0.18)',
+              }}
+            >
+              {/* Relationship colour accent */}
+              <div style={{ height: 3, background: accent, borderRadius: '16px 16px 0 0' }} />
 
-              return (
-                <motion.article
-                  key={tribute.slug}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: '-60px' }}
-                  variants={cardVariants}
-                  className="rounded-2xl overflow-hidden"
+              <div className="px-6 py-7 md:px-10 md:py-9">
+
+                {/* Date — top right */}
+                <div style={{ textAlign: 'right', marginBottom: 20 }}>
+                  <time
+                    className="font-sans"
+                    style={{ fontSize: '0.7rem', color: '#b09080', letterSpacing: '0.07em' }}
+                  >
+                    {new Date(tribute.frontmatter.date).toLocaleDateString('en-AU', {
+                      year: 'numeric', month: 'long', day: 'numeric',
+                    })}
+                  </time>
+                </div>
+
+                {/* Salutation */}
+                <h3
+                  className="font-serif italic leading-snug"
+                  style={{ fontSize: 'clamp(1.25rem, 4vw, 1.65rem)', color: '#4a3728', marginBottom: 18 }}
+                >
+                  {tribute.frontmatter.title}
+                </h3>
+
+                <div
+                  style={{ height: 1, background: 'rgba(212,160,160,0.22)', marginBottom: 20 }}
+                />
+
+                {/* Body */}
+                <div
+                  className="font-sans"
+                  style={{ fontSize: '0.9rem', lineHeight: 1.85, color: '#7a6558' }}
+                >
+                  {tribute.content}
+                </div>
+
+                {/* Signature */}
+                <div
                   style={{
-                    background: '#faf6f0',
-                    boxShadow:  '0 4px 24px rgba(74,55,40,0.09), 0 1px 0 rgba(255,255,255,0.8) inset',
-                    border:     '1px solid rgba(212,160,160,0.18)',
+                    marginTop: 28,
+                    paddingTop: 20,
+                    borderTop: '1px solid rgba(212,160,160,0.22)',
                   }}
                 >
-                  {/* Rose top border accent */}
-                  <div style={{ height: 4, background: accent }} />
+                  <p
+                    className="font-serif italic"
+                    style={{ fontSize: '0.82rem', color: '#b09080', marginBottom: 5 }}
+                  >
+                    {closing}
+                  </p>
+                  <p
+                    className="font-serif italic"
+                    style={{ fontSize: '1.1rem', color: '#4a3728', marginBottom: 3 }}
+                  >
+                    {tribute.frontmatter.author}
+                  </p>
+                  <p
+                    className="font-sans"
+                    style={{
+                      fontSize: '0.68rem',
+                      color: accent,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {tribute.frontmatter.relationship}
+                  </p>
+                </div>
 
-                  <div className="px-8 py-7">
-                    {/* Author row */}
-                    <div className="flex items-start gap-4 mb-6">
-                      {/* Avatar circle with initials */}
-                      <div
-                        className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-sm font-semibold"
-                        style={{
-                          background:  '#8aaa8a',
-                          color:       '#faf6f0',
-                          fontFamily:  'var(--font-nunito), system-ui, sans-serif',
-                          letterSpacing: '0.04em',
-                        }}
-                      >
-                        {tribute.frontmatter.avatar ? (
-                          <img
-                            src={tribute.frontmatter.avatar}
-                            alt={tribute.frontmatter.author}
-                            className="w-full h-full rounded-full object-cover"
-                          />
-                        ) : (
-                          getInitials(tribute.frontmatter.author)
-                        )}
-                      </div>
+              </div>
+            </motion.article>
+          </AnimatePresence>
+        </div>
 
-                      <div className="flex-1">
-                        <p
-                          className="font-sans font-semibold text-sm"
-                          style={{ color: '#4a3728' }}
-                        >
-                          {tribute.frontmatter.author}
-                        </p>
-                        <p className="font-sans text-xs mt-0.5" style={{ color: accent }}>
-                          {tribute.frontmatter.relationship}
-                        </p>
-                      </div>
+        {/* Navigation */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 16,
+            marginTop: 24,
+          }}
+        >
+          {/* Prev */}
+          <button
+            onClick={() => paginate(-1)}
+            disabled={current === 0}
+            aria-label="Previous tribute"
+            style={{
+              width: 34, height: 34,
+              borderRadius: '50%',
+              border: '1px solid rgba(212,160,160,0.35)',
+              background: 'transparent',
+              color: current === 0 ? 'rgba(176,144,128,0.25)' : '#7a6558',
+              cursor: current === 0 ? 'default' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '1rem',
+              transition: 'color 0.2s',
+              flexShrink: 0,
+            }}
+          >
+            ←
+          </button>
 
-                      {/* Date */}
-                      <time
-                        className="font-sans text-xs shrink-0 mt-0.5"
-                        style={{ color: '#b09080', letterSpacing: '0.04em' }}
-                      >
-                        {new Date(tribute.frontmatter.date).toLocaleDateString('en-AU', {
-                          year:  'numeric',
-                          month: 'short',
-                          day:   'numeric',
-                        })}
-                      </time>
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className="font-serif italic text-xl mb-4 leading-snug"
-                      style={{ color: '#4a3728' }}
-                    >
-                      {tribute.frontmatter.title}
-                    </h3>
-
-                    {/* Body */}
-                    <div
-                      className="font-sans text-sm leading-relaxed"
-                      style={{ color: '#7a6558' }}
-                    >
-                      {tribute.content}
-                    </div>
-                  </div>
-                </motion.article>
-              )
-            })}
+          {/* Dots */}
+          <div style={{ display: 'flex', gap: 7, alignItems: 'center' }}>
+            {tributes.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent([i, i > current ? 1 : -1])}
+                aria-label={`Tribute ${i + 1}`}
+                style={{
+                  width: i === current ? 22 : 7,
+                  height: 7,
+                  borderRadius: 4,
+                  background: i === current ? '#d4a0a0' : 'rgba(212,160,160,0.28)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'all 0.3s ease',
+                  flexShrink: 0,
+                }}
+              />
+            ))}
           </div>
-        )}
+
+          {/* Next */}
+          <button
+            onClick={() => paginate(1)}
+            disabled={current === tributes.length - 1}
+            aria-label="Next tribute"
+            style={{
+              width: 34, height: 34,
+              borderRadius: '50%',
+              border: '1px solid rgba(212,160,160,0.35)',
+              background: 'transparent',
+              color: current === tributes.length - 1 ? 'rgba(176,144,128,0.25)' : '#7a6558',
+              cursor: current === tributes.length - 1 ? 'default' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '1rem',
+              transition: 'color 0.2s',
+              flexShrink: 0,
+            }}
+          >
+            →
+          </button>
+        </div>
+
+        {/* Counter */}
+        <p
+          className="font-sans text-center"
+          style={{ marginTop: 10, fontSize: '0.68rem', color: '#b09080', letterSpacing: '0.1em' }}
+        >
+          {current + 1} of {tributes.length}
+        </p>
+
       </div>
     </SectionWrapper>
   )
