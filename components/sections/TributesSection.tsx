@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import type { TributePost } from '@/types'
 
@@ -25,14 +24,62 @@ const closings: Record<string, string> = {
   Coach:    'In memory,',
 }
 
-const DRAG_THRESHOLD = 50
-
 interface TributesSectionProps {
   tributes: TributePost[]
 }
 
+const SWIPE_THRESHOLD = 50
+const GAP = 16
+
 export function TributesSection({ tributes }: TributesSectionProps) {
-  const [[current, direction], setCurrent] = useState([0, 0])
+  const [current, setCurrent] = useState(0)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const touchStartX = useRef(0)
+  const touchStartY = useRef(0)
+  const dragging = useRef(false)
+  const directionLocked = useRef<'horizontal' | 'vertical' | null>(null)
+  const baseOffset = useRef(0)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+
+  const getCardOffset = useCallback((index: number) => {
+    const card = cardRefs.current[index]
+    if (!card) return 0
+    return -(card.offsetLeft + card.offsetWidth / 2 - window.innerWidth / 2)
+  }, [])
+
+  const setTrackTransform = useCallback((x: number, animate: boolean) => {
+    const track = trackRef.current
+    if (!track) return
+    track.style.transition = animate ? 'transform 0.4s ease-out' : 'none'
+    track.style.transform = `translateX(${x}px)`
+  }, [])
+
+  const selectCard = useCallback((index: number) => {
+    const clamped = Math.max(0, Math.min(tributes.length - 1, index))
+    // Lock wrapper height to prevent page jump when switching to a shorter card
+    const wrapper = wrapperRef.current
+    if (wrapper) {
+      wrapper.style.minHeight = `${wrapper.offsetHeight}px`
+      // Release after transition completes
+      setTimeout(() => { wrapper.style.minHeight = '' }, 450)
+    }
+    setCurrent(clamped)
+    setTrackTransform(getCardOffset(clamped), true)
+    // Scroll page so the top of the carousel is visible
+    wrapper?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [tributes.length, getCardOffset, setTrackTransform])
+
+  // Centre on mount and resize
+  useEffect(() => {
+    setTrackTransform(getCardOffset(current), false)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const onResize = () => setTrackTransform(getCardOffset(current), false)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [current, getCardOffset, setTrackTransform])
 
   if (tributes.length === 0) {
     return (
@@ -44,26 +91,9 @@ export function TributesSection({ tributes }: TributesSectionProps) {
     )
   }
 
-  const paginate = (newDir: number) => {
-    const next = current + newDir
-    if (next < 0 || next >= tributes.length) return
-    setCurrent([next, newDir])
-  }
-
-  const tribute = tributes[current]
-  const accent  = relationshipAccents[tribute.frontmatter.relationship] ?? '#d4a0a0'
-  const closing = closings[tribute.frontmatter.relationship] ?? 'With love,'
-
-  const variants = {
-    enter:  (dir: number) => ({ x: dir > 0 ? '60%' : '-60%', opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit:   (dir: number) => ({ x: dir > 0 ? '-60%' : '60%', opacity: 0 }),
-  }
-
   return (
     <SectionWrapper id="tributes" className="py-14 md:py-24" style={{ background: '#faf6f0' }}>
       <div className="max-w-2xl mx-auto px-4 md:px-6">
-
         {/* Heading */}
         <div className="text-center mb-10">
           <p
@@ -83,35 +113,104 @@ export function TributesSection({ tributes }: TributesSectionProps) {
             style={{ width: 48, height: 3, background: '#d4a0a0', opacity: 0.65 }}
           />
         </div>
+      </div>
 
-        {/* Letter */}
-        <div style={{ position: 'relative', overflow: 'hidden' }}>
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.article
-              key={tribute.slug}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.35, ease: [0.43, 0.13, 0.23, 0.96] }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.12}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -DRAG_THRESHOLD) paginate(1)
-                else if (info.offset.x > DRAG_THRESHOLD) paginate(-1)
-              }}
-              style={{
-                cursor: 'grab',
-                borderRadius: 16,
-                background: '#faf6f0',
-                boxShadow: '0 2px 8px rgba(74,55,40,0.07), 0 12px 36px rgba(74,55,40,0.11), 0 1px 0 rgba(255,255,255,0.9) inset',
-                border: '1px solid rgba(212,160,160,0.18)',
-              }}
-            >
+      {/* Dots */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 16 }}>
+        {tributes.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => selectCard(i)}
+            aria-label={`Tribute ${i + 1}`}
+            style={{
+              width: i === current ? 24 : 8,
+              height: 8,
+              borderRadius: 4,
+              background: i === current ? '#d4a0a0' : 'rgba(212,160,160,0.3)',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+              transition: 'all 0.3s ease',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Horizontal carousel — transform-based, no scroll-snap */}
+      <div
+        ref={wrapperRef}
+        style={{ overflow: 'hidden', paddingTop: 8, paddingBottom: 32 }}
+        onTouchStart={(e) => {
+          touchStartX.current = e.touches[0].clientX
+          touchStartY.current = e.touches[0].clientY
+          baseOffset.current = getCardOffset(current)
+          dragging.current = false
+          directionLocked.current = null
+        }}
+        onTouchMove={(e) => {
+          const dx = e.touches[0].clientX - touchStartX.current
+          const dy = e.touches[0].clientY - touchStartY.current
+
+          // Lock direction on first significant movement
+          if (!directionLocked.current) {
+            if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return
+            directionLocked.current = Math.abs(dx) > Math.abs(dy) ? 'horizontal' : 'vertical'
+            if (directionLocked.current === 'horizontal') dragging.current = true
+          }
+
+          if (directionLocked.current !== 'horizontal') return
+          e.preventDefault()
+          setTrackTransform(baseOffset.current + dx, false)
+        }}
+        onTouchEnd={(e) => {
+          if (!dragging.current) return
+          dragging.current = false
+          const delta = e.changedTouches[0].clientX - touchStartX.current
+          if (Math.abs(delta) > SWIPE_THRESHOLD) {
+            selectCard(delta > 0 ? current - 1 : current + 1)
+          } else {
+            setTrackTransform(getCardOffset(current), true)
+          }
+        }}
+      >
+        <div
+          ref={trackRef}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: GAP,
+          }}
+        >
+          {tributes.map((tribute, i) => {
+            const accent  = relationshipAccents[tribute.frontmatter.relationship] ?? '#d4a0a0'
+            const closing = closings[tribute.frontmatter.relationship] ?? 'With love,'
+            const isActive = i === current
+
+            return (
+              <div
+                key={tribute.slug}
+                ref={el => { cardRefs.current[i] = el }}
+                onClick={() => selectCard(i)}
+                style={{
+                  flex: '0 0 auto',
+                  width: 'min(92vw, 780px)',
+                  ...(isActive ? {} : { maxHeight: 780 }),
+                  position: 'relative',
+                  cursor: isActive ? 'default' : 'pointer',
+                  opacity: isActive ? 1 : 0.55,
+                  transform: isActive ? 'scale(1)' : 'scale(0.94)',
+                  transition: 'opacity 0.35s ease, transform 0.35s ease',
+                  borderRadius: 16,
+                  overflow: 'hidden',
+                  background: '#faf6f0',
+                  boxShadow: isActive
+                    ? '0 2px 8px rgba(74,55,40,0.07), 0 12px 36px rgba(74,55,40,0.13), 0 1px 0 rgba(255,255,255,0.9) inset'
+                    : '0 1px 4px rgba(74,55,40,0.05), 0 4px 14px rgba(74,55,40,0.07)',
+                  border: '1px solid rgba(212,160,160,0.18)',
+                }}
+              >
               {/* Relationship colour accent */}
-              <div style={{ height: 3, background: accent, borderRadius: '16px 16px 0 0' }} />
+              <div style={{ height: 4, background: accent }} />
 
               <div className="px-6 py-7 md:px-10 md:py-9">
 
@@ -135,9 +234,7 @@ export function TributesSection({ tributes }: TributesSectionProps) {
                   {tribute.frontmatter.title}
                 </h3>
 
-                <div
-                  style={{ height: 1, background: 'rgba(212,160,160,0.22)', marginBottom: 20 }}
-                />
+                <div style={{ height: 1, background: 'rgba(212,160,160,0.22)', marginBottom: 20 }} />
 
                 {/* Body */}
                 <div
@@ -152,6 +249,7 @@ export function TributesSection({ tributes }: TributesSectionProps) {
                   style={{
                     marginTop: 28,
                     paddingTop: 20,
+                    paddingBottom: 28,
                     borderTop: '1px solid rgba(212,160,160,0.22)',
                   }}
                 >
@@ -181,94 +279,27 @@ export function TributesSection({ tributes }: TributesSectionProps) {
                 </div>
 
               </div>
-            </motion.article>
-          </AnimatePresence>
+
+              {/* Fade gradient — only on inactive cards that overflow the maxHeight */}
+              {!isActive && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: 80,
+                    background: 'linear-gradient(to bottom, transparent, #faf6f0)',
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
+            </div>
+          )
+          })}
         </div>
-
-        {/* Navigation */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 16,
-            marginTop: 24,
-          }}
-        >
-          {/* Prev */}
-          <button
-            onClick={() => paginate(-1)}
-            disabled={current === 0}
-            aria-label="Previous tribute"
-            style={{
-              width: 34, height: 34,
-              borderRadius: '50%',
-              border: '1px solid rgba(212,160,160,0.35)',
-              background: 'transparent',
-              color: current === 0 ? 'rgba(176,144,128,0.25)' : '#7a6558',
-              cursor: current === 0 ? 'default' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1rem',
-              transition: 'color 0.2s',
-              flexShrink: 0,
-            }}
-          >
-            ←
-          </button>
-
-          {/* Dots */}
-          <div style={{ display: 'flex', gap: 7, alignItems: 'center' }}>
-            {tributes.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent([i, i > current ? 1 : -1])}
-                aria-label={`Tribute ${i + 1}`}
-                style={{
-                  width: i === current ? 22 : 7,
-                  height: 7,
-                  borderRadius: 4,
-                  background: i === current ? '#d4a0a0' : 'rgba(212,160,160,0.28)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: 0,
-                  transition: 'all 0.3s ease',
-                  flexShrink: 0,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Next */}
-          <button
-            onClick={() => paginate(1)}
-            disabled={current === tributes.length - 1}
-            aria-label="Next tribute"
-            style={{
-              width: 34, height: 34,
-              borderRadius: '50%',
-              border: '1px solid rgba(212,160,160,0.35)',
-              background: 'transparent',
-              color: current === tributes.length - 1 ? 'rgba(176,144,128,0.25)' : '#7a6558',
-              cursor: current === tributes.length - 1 ? 'default' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1rem',
-              transition: 'color 0.2s',
-              flexShrink: 0,
-            }}
-          >
-            →
-          </button>
-        </div>
-
-        {/* Counter */}
-        <p
-          className="font-sans text-center"
-          style={{ marginTop: 10, fontSize: '0.68rem', color: '#b09080', letterSpacing: '0.1em' }}
-        >
-          {current + 1} of {tributes.length}
-        </p>
-
       </div>
+
     </SectionWrapper>
   )
 }

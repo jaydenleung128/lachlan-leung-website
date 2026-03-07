@@ -21,6 +21,12 @@ html {
   background-color: #f5efe6;
 }
 
+/* Hide scrollbar for tribute carousel track and inner scroll */
+.tribute-track::-webkit-scrollbar,
+.tribute-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-brown);

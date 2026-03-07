@@ -326,6 +326,7 @@ function VariantB() {
   const dotRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [pointerLeft, setPointerLeft] = useState<number | null>(null)
   const touchStartX = useRef<number>(0)
+  const isProgrammaticScroll = useRef(false)
   const selected = EVENTS.find(e => e.id === selectedId)!
   const selectedIdx = EVENTS.findIndex(e => e.id === selectedId)
 
@@ -335,8 +336,10 @@ function VariantB() {
     const dot  = dotRefs.current[id]
     if (!rail || !dot) return
     const scrollTarget = Math.max(0, dot.offsetLeft + dot.offsetWidth / 2 - rail.offsetWidth / 2)
+    isProgrammaticScroll.current = true
     rail.scrollTo({ left: scrollTarget, behavior: 'smooth' })
     setPointerLeft(dot.offsetLeft + dot.offsetWidth / 2 - scrollTarget)
+    setTimeout(() => { isProgrammaticScroll.current = false }, 500)
   }
 
   // Sync selected state after native scroll settles (supports scrollend + debounce fallback)
@@ -345,6 +348,7 @@ function VariantB() {
     if (!rail) return
 
     const syncNearest = () => {
+      if (isProgrammaticScroll.current) return
       const railCenter = rail.scrollLeft + rail.offsetWidth / 2
       let nearestId   = EVENTS[0].id
       let nearestDist = Infinity

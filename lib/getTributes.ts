@@ -28,6 +28,6 @@ export async function getTributes(): Promise<TributePost[]> {
   )
 
   return tributes.sort(
-    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+    (a, b) => (a.frontmatter.order ?? 99) - (b.frontmatter.order ?? 99)
   )
 }

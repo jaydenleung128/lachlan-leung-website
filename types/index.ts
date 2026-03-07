@@ -21,9 +21,10 @@ export interface AchievementsData {
 export interface TributeFrontmatter {
   title: string
   author: string
-  relationship: 'Family' | 'Teammate' | 'Coach' | 'Friend'
+  relationship: 'Family' | 'Teammate' | 'Coach' | 'Friend' | 'Mum' | 'Dad' | 'Brother'
   date: string
   avatar?: string
+  order?: number
 }
 
 export interface TributePost {
