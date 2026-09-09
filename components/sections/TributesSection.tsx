@@ -13,6 +13,7 @@ const relationshipAccents: Record<string, string> = {
   Coach:    '#c4a882',
   Friend:   '#a0b4d4',
   'Deputy Principal, Menai High School': '#b0a0c4',
+  'CEO, Table Tennis NSW': '#8aaa8a',
 }
 
 const closings: Record<string, string> = {
@@ -24,6 +25,7 @@ const closings: Record<string, string> = {
   Teammate: 'In memory,',
   Coach:    'In memory,',
   'Deputy Principal, Menai High School': 'With deepest respect,',
+  'CEO, Table Tennis NSW': 'All my love,',
 }
 
 interface TributesSectionProps {
