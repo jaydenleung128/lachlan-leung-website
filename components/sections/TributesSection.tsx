@@ -12,6 +12,7 @@ const relationshipAccents: Record<string, string> = {
   Teammate: '#8aaa8a',
   Coach:    '#c4a882',
   Friend:   '#a0b4d4',
+  Staff:    '#b0a0c4',
 }
 
 const closings: Record<string, string> = {
@@ -22,6 +23,7 @@ const closings: Record<string, string> = {
   Friend:   'Fondly,',
   Teammate: 'In memory,',
   Coach:    'In memory,',
+  Staff:    'With deepest respect,',
 }
 
 interface TributesSectionProps {
