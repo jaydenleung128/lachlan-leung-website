@@ -17,7 +17,7 @@ const relationshipAccents: Record<string, string> = {
 const closings: Record<string, string> = {
   Mum:      'With all my love,',
   Dad:      'With all my love,',
-  Brother:  'With love,',
+  Brother:  'With all my love,',
   Family:   'With love,',
   Friend:   'Fondly,',
   Teammate: 'In memory,',
