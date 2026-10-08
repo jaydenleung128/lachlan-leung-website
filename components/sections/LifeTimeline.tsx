@@ -14,6 +14,8 @@ interface TimelineEvent {
   location?: string
   body: string
   youtubeId?: string
+  imageUrl?: string
+  imageAlt?: string
 }
 
 // ─── Data (newest first) ──────────────────────────────────────────────────────
@@ -52,6 +54,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'Diamond Award',
     location: 'Menai, NSW',
     body: "Recipient of the Diamond Award — Menai High School's highest honour for student achievement. Recognised for excellence in both academics and sport.",
+    imageUrl: '/images/diamond-award-board.png',
+    imageAlt: 'Menai High School Diamond Awards honour board featuring Lachlan Leung (2024)',
   },
   {
     id: 'coaching-2024',
@@ -299,6 +303,17 @@ function EventContent({ event }: { event: TimelineEvent }) {
       >
         {event.body}
       </p>
+
+      {event.imageUrl && (
+        <div className="mt-4 rounded-xl overflow-hidden">
+          <img
+            src={event.imageUrl}
+            alt={event.imageAlt ?? event.title}
+            className="w-full h-auto object-cover"
+            style={{ display: 'block' }}
+          />
+        </div>
+      )}
 
       {event.youtubeId && (
         <div
