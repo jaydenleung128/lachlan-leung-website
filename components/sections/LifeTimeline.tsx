@@ -104,6 +104,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'TTA Canberra Gold',
     location: 'Canberra, ACT',
     body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Canberra.',
+    imageUrl: '/images/tta-canberra-gold-2024.jpg',
+    imageAlt: 'Lachlan Leung at the 2024 TTA Tour event in Canberra',
   },
   {
     id: 'david-coleman-2023',
