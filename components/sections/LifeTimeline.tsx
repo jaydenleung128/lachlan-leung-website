@@ -122,7 +122,7 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Junior Open Gold',
     location: 'New South Wales',
     body: 'Gold medallist in the Under 11 Boys Singles, with a bronze in Mixed Doubles at the NSW Junior Open Championships.',
-    imageUrl: '/images/nsw-junior-open-gold-2019.png',
+    imageUrl: '/images/nsw-junior-open-gold-2019.jpg',
     imageAlt: 'Lachlan Leung at the 2019 NSW Junior Open Championships',
   },
   {
