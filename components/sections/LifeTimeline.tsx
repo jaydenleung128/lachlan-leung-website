@@ -150,6 +150,7 @@ const EVENTS: TimelineEvent[] = [
     images: [
       { url: '/images/first-national-gold-2018.png', alt: 'Lachlan Leung at the 2018 Australian Championships — his first national gold' },
       { url: '/images/first-national-gold-2018b.jpg', alt: 'Lachlan Leung at the 2018 Australian Championships' },
+      { url: '/images/first-national-gold-2018c.jpg', alt: 'Lachlan Leung at the 2018 Australian Championships' },
     ],
   },
 ]
