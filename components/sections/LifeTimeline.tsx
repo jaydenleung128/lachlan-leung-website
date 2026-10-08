@@ -43,6 +43,7 @@ const EVENTS: TimelineEvent[] = [
       { url: '/images/career-high-rankings-2025b.png', alt: 'Lachlan Leung TTA Under 17 Boys national rankings' },
       { url: '/images/career-high-rankings-2025c.png', alt: 'Lachlan Leung TTA Under 21 Boys national rankings' },
       { url: '/images/career-high-rankings-2025d.png', alt: 'Lachlan Leung NSW rankings 2024' },
+      { url: '/images/career-high-rankings-2025e.png', alt: 'Lachlan Leung TTNSW rankings' },
     ],
   },
   {
