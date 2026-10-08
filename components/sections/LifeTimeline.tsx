@@ -72,7 +72,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'Australian Nationals Gold',
     location: 'Australia',
     body: 'Gold medallist in the Australian Under 17 Boys Teams event at the national championships.',
-    youtubeId: 'DZrig1XNVxA',
+    imageUrl: '/images/aus-nationals-gold-2024.jpg',
+    imageAlt: 'Lachlan Leung at the 2024 Australian National Championships',
   },
   {
     id: 'nsw-junior-closed-2024',
