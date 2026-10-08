@@ -46,6 +46,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Schools Shield Gold',
     location: 'New South Wales',
     body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
+    imageUrl: '/images/nsw-schools-shield-gold-2025.jpg',
+    imageAlt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025',
   },
   {
     id: 'diamond-award-2024',
