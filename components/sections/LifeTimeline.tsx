@@ -38,10 +38,10 @@ const EVENTS: TimelineEvent[] = [
     title: 'Career-High Rankings',
     location: 'Australia',
     body: 'Reached his career-high rankings — 5th in Australia in the TTA Under 17 Boys category, and 32nd nationally in Open Men, competing against players of all ages.',
-    youtubeId: 'DZrig1XNVxA',
     images: [
       { url: '/images/career-high-rankings-2025.png', alt: 'Lachlan Leung TTA Open Men national rankings' },
       { url: '/images/career-high-rankings-2025b.png', alt: 'Lachlan Leung TTA Under 17 Boys national rankings' },
+      { url: '/images/career-high-rankings-2025c.png', alt: 'Lachlan Leung TTA Under 21 Boys national rankings' },
     ],
   },
   {
@@ -339,7 +339,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
       )}
 
       {event.images && event.images.length > 0 && (
-        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : event.images.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
           {event.images.map((img, i) => (
             <div key={i} className="rounded-xl overflow-hidden">
               <img src={img.url} alt={img.alt} className="w-full h-auto" style={{ display: 'block' }} />
