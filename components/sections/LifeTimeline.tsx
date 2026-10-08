@@ -332,7 +332,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
         <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
           {event.images.map((img, i) => (
             <div key={i} className="rounded-xl overflow-hidden">
-              <img src={img.url} alt={img.alt} className="w-full h-full object-cover" style={{ display: 'block', aspectRatio: '1/1' }} />
+              <img src={img.url} alt={img.alt} className="w-full h-auto" style={{ display: 'block' }} />
             </div>
           ))}
         </div>
