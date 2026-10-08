@@ -67,6 +67,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'Level 1 Coaching',
     location: 'Australia',
     body: 'Achieved Table Tennis Australia Level 1 coaching accreditation — beginning to give back to the sport and younger players who looked up to him.',
+    imageUrl: '/images/level-1-coaching-2024.png',
+    imageAlt: 'Lachlan Leung receiving his Table Tennis Australia Level 1 coaching accreditation',
   },
   {
     id: 'aus-nationals-2024',
