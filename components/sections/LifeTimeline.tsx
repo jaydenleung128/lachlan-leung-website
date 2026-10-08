@@ -16,6 +16,7 @@ interface TimelineEvent {
   youtubeId?: string
   imageUrl?: string
   imageAlt?: string
+  images?: { url: string; alt: string }[]
 }
 
 // ─── Data (newest first) ──────────────────────────────────────────────────────
@@ -122,8 +123,10 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Junior Open Gold',
     location: 'New South Wales',
     body: 'Gold medallist in the Under 11 Boys Singles, with a bronze in Mixed Doubles at the NSW Junior Open Championships.',
-    imageUrl: '/images/nsw-junior-open-gold-2019.jpg',
-    imageAlt: 'Lachlan Leung at the 2019 NSW Junior Open Championships',
+    images: [
+      { url: '/images/nsw-junior-open-gold-2019.jpg', alt: 'Lachlan Leung at the 2019 NSW Junior Open Championships' },
+      { url: '/images/nsw-junior-open-gold-2019b.jpg', alt: 'Lachlan Leung at the 2019 NSW Junior Open Championships' },
+    ],
   },
   {
     id: 'aus-u11-2018',
@@ -322,6 +325,16 @@ function EventContent({ event }: { event: TimelineEvent }) {
             className="w-full h-auto object-cover"
             style={{ display: 'block' }}
           />
+        </div>
+      )}
+
+      {event.images && event.images.length > 0 && (
+        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+          {event.images.map((img, i) => (
+            <div key={i} className="rounded-xl overflow-hidden">
+              <img src={img.url} alt={img.alt} className="w-full h-full object-cover" style={{ display: 'block', aspectRatio: '1/1' }} />
+            </div>
+          ))}
         </div>
       )}
 
