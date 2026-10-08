@@ -39,8 +39,10 @@ const EVENTS: TimelineEvent[] = [
     location: 'Australia',
     body: 'Reached his career-high rankings — 5th in Australia in the TTA Under 17 Boys category, and 32nd nationally in Open Men, competing against players of all ages.',
     youtubeId: 'DZrig1XNVxA',
-    imageUrl: '/images/career-high-rankings-2025.png',
-    imageAlt: 'Lachlan Leung TTA Open Men national rankings',
+    images: [
+      { url: '/images/career-high-rankings-2025.png', alt: 'Lachlan Leung TTA Open Men national rankings' },
+      { url: '/images/career-high-rankings-2025b.png', alt: 'Lachlan Leung TTA Under 17 Boys national rankings' },
+    ],
   },
   {
     id: 'school-shield-2025',
