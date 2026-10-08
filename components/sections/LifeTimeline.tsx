@@ -16,6 +16,7 @@ interface TimelineEvent {
   youtubeId?: string
   imageUrl?: string
   imageAlt?: string
+  images?: { url: string; alt: string }[]
 }
 
 // ─── Data (newest first) ──────────────────────────────────────────────────────
@@ -46,8 +47,10 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Schools Shield Gold',
     location: 'New South Wales',
     body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
-    imageUrl: '/images/nsw-schools-shield-gold-2025.jpg',
-    imageAlt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025',
+    images: [
+      { url: '/images/nsw-schools-shield-gold-2025.jpg', alt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025' },
+      { url: '/images/nsw-schools-shield-gold-2025b.jpg', alt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025' },
+    ],
   },
   {
     id: 'diamond-award-2024',
@@ -316,6 +319,21 @@ function EventContent({ event }: { event: TimelineEvent }) {
             className="w-full h-auto object-cover"
             style={{ display: 'block' }}
           />
+        </div>
+      )}
+
+      {event.images && event.images.length > 0 && (
+        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+          {event.images.map((img, i) => (
+            <div key={i} className="rounded-xl overflow-hidden">
+              <img
+                src={img.url}
+                alt={img.alt}
+                className="w-full h-auto object-cover"
+                style={{ display: 'block' }}
+              />
+            </div>
+          ))}
         </div>
       )}
 
