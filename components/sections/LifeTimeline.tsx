@@ -132,7 +132,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'First National Gold',
     location: 'Australia',
     body: 'Gold medallist in the Under 11 Boys Teams event at the Australian Championships — his very first national gold medal, aged just 9 years old.',
-    youtubeId: 'DZrig1XNVxA',
+    imageUrl: '/images/first-national-gold-2018.png',
+    imageAlt: 'Lachlan Leung at the 2018 Australian Championships — his first national gold',
   },
 ]
 
