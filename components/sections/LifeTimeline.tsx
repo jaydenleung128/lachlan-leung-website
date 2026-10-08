@@ -84,7 +84,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'NSW Junior Closed Gold',
     location: 'New South Wales',
     body: "Gold medallist in the Under 21 Men's Singles at the NSW Junior Closed Championships, plus silver at the NSW Open.",
-    youtubeId: 'DZrig1XNVxA',
+    imageUrl: '/images/nsw-junior-closed-gold-2024.jpg',
+    imageAlt: 'Lachlan Leung at the 2024 NSW Junior Closed Championships',
   },
   {
     id: 'tta-mandurah-2024',
