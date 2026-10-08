@@ -94,6 +94,8 @@ const EVENTS: TimelineEvent[] = [
     title: 'TTA Mandurah Gold',
     location: 'Mandurah, WA',
     body: 'Gold medallist in the Under 17 Boys Singles at the TTA Tour event in Mandurah, Western Australia.',
+    imageUrl: '/images/tta-mandurah-gold-2024.jpg',
+    imageAlt: 'Lachlan Leung at the 2024 TTA Tour event in Mandurah',
   },
   {
     id: 'tta-canberra-2024',
