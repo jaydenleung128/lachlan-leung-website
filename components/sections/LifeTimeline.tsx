@@ -115,8 +115,10 @@ const EVENTS: TimelineEvent[] = [
     title: 'MP Sporting Award',
     location: 'Sydney',
     body: 'Awarded the 2018–2023 David Coleman MP (Banks) Outstanding Sporting Achievement Award — recognising six years of extraordinary table tennis achievements.',
-    imageUrl: '/images/mp-sporting-award-2023.jpg',
-    imageAlt: 'Lachlan Leung receiving the David Coleman MP Outstanding Sporting Achievement Award',
+    images: [
+      { url: '/images/mp-sporting-award-2023.jpg', alt: 'Lachlan Leung receiving the David Coleman MP Outstanding Sporting Achievement Award' },
+      { url: '/images/mp-sporting-award-2023b.jpg', alt: 'Lachlan Leung receiving the David Coleman MP Outstanding Sporting Achievement Award' },
+    ],
   },
   {
     id: 'nsw-junior-open-2019',
