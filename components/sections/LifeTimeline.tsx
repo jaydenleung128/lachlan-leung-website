@@ -42,6 +42,7 @@ const EVENTS: TimelineEvent[] = [
       { url: '/images/career-high-rankings-2025.png', alt: 'Lachlan Leung TTA Open Men national rankings' },
       { url: '/images/career-high-rankings-2025b.png', alt: 'Lachlan Leung TTA Under 17 Boys national rankings' },
       { url: '/images/career-high-rankings-2025c.png', alt: 'Lachlan Leung TTA Under 21 Boys national rankings' },
+      { url: '/images/career-high-rankings-2025d.png', alt: 'Lachlan Leung NSW rankings 2024' },
     ],
   },
   {
@@ -339,7 +340,7 @@ function EventContent({ event }: { event: TimelineEvent }) {
       )}
 
       {event.images && event.images.length > 0 && (
-        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : event.images.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+        <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : event.images.length === 3 ? 'grid-cols-3' : event.images.length >= 4 ? 'grid-cols-2' : 'grid-cols-2'}`}>
           {event.images.map((img, i) => (
             <div key={i} className="rounded-xl overflow-hidden">
               <img src={img.url} alt={img.alt} className="w-full h-auto" style={{ display: 'block' }} />
