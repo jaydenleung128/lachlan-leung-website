@@ -82,7 +82,7 @@ export function FinalRestingPlaceSection() {
           className="font-sans text-center mt-3 mb-8"
           style={{ fontSize: '0.72rem', color: '#b09080', letterSpacing: '0.08em' }}
         >
-          −33.881495, 151.054036
+          It is situated at coordinates 33.881495° South, 151.054036° East
         </motion.p>
 
         {/* Photos */}
