@@ -73,6 +73,18 @@ export function FinalRestingPlaceSection() {
           />
         </motion.div>
 
+        {/* Coordinates */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.15 }}
+          className="font-sans text-center mt-3 mb-8"
+          style={{ fontSize: '0.72rem', color: '#b09080', letterSpacing: '0.08em' }}
+        >
+          −33.881495, 151.054036
+        </motion.p>
+
         {/* Photos */}
         {PHOTOS.length > 0 && (
           <motion.div
