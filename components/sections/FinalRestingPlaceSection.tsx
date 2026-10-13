@@ -62,7 +62,7 @@ export function FinalRestingPlaceSection() {
           }}
         >
           <iframe
-            src="https://maps.google.com/maps?q=Saint+John+Paul+II+Garden+Crypts+Rookwood+Cemetery+Lidcombe+NSW+Australia&output=embed&t=k&z=19"
+            src="https://maps.google.com/maps?q=-33.881495,151.054036&output=embed&t=k&z=19"
             width="100%"
             height="420"
             style={{ border: 0, display: 'block' }}
