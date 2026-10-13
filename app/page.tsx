@@ -6,6 +6,7 @@ import { AboutSection } from '@/components/sections/AboutSection'
 import { PlayerSection } from '@/components/sections/PlayerSection'
 import { AchievementsSection } from '@/components/sections/AchievementsSection'
 import { TributesSection } from '@/components/sections/TributesSection'
+import { FinalRestingPlaceSection } from '@/components/sections/FinalRestingPlaceSection'
 import { DonateSection } from '@/components/sections/DonateSection'
 import { Footer } from '@/components/sections/Footer'
 
@@ -24,6 +25,7 @@ export default async function HomePage() {
         <PlayerSection />
         <AchievementsSection highlights={achievements.highlights} />
         <TributesSection tributes={tributes} />
+        <FinalRestingPlaceSection />
         <DonateSection />
       </main>
       <Footer />
