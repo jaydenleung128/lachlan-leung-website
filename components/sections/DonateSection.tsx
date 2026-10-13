@@ -49,7 +49,7 @@ export function DonateSection() {
         >
           Lachlan&rsquo;s family asks that donations in his memory go to the{' '}
           <span style={{ color: '#4a3728' }}>Lachlan Leung Foundation</span>{' '}
-          in support of the{' '}
+          in support of the Children&rsquo;s Cancer Institute{' '}
           <span className="font-serif italic" style={{ color: '#d4a0a0' }}>ECLIPSE</span>{' '}
           research project.
         </motion.p>
