@@ -70,7 +70,7 @@ export function DonateSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
-            href="https://www.ccia.org.au/event/lachlan-leung/donate"
+            href="https://www.lachlanleungfoundation.org.au"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ y: -1, boxShadow: '0 8px 28px rgba(212,160,160,0.35)', background: '#c48e8e' }}
