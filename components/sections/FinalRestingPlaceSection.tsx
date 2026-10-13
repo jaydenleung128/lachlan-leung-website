@@ -7,7 +7,7 @@ const EASE = [0.43, 0.13, 0.23, 0.96] as const
 const VIEWPORT = { once: true, margin: '-80px' } as const
 
 const PHOTOS: { src: string; alt: string }[] = [
-  { src: '/images/resting-place-1.webp', alt: "Lachlan Leung's resting place at Rookwood Cemetery, Sydney" },
+  // Photos added here
 ]
 
 export function FinalRestingPlaceSection() {
