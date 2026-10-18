@@ -41,6 +41,16 @@ const EVENTS: TimelineEvent[] = [
     youtubeId: 'DZrig1XNVxA',
   },
   {
+    id: 'school-shield-2025',
+    date: '2025-08-31',
+    category: 'tournament',
+    title: 'NSW Schools Shield Gold',
+    location: 'New South Wales',
+    body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
+    imageUrl: '/images/nsw-schools-shield-gold-2025.jpg',
+    imageAlt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025',
+  },
+  {
     id: 'ranked-2025',
     date: '2025-01-31',
     category: 'tournament',
@@ -54,16 +64,6 @@ const EVENTS: TimelineEvent[] = [
       { url: '/images/career-high-rankings-2025d.png', alt: 'Lachlan Leung NSW rankings 2024' },
       { url: '/images/career-high-rankings-2025e.png', alt: 'Lachlan Leung TTNSW rankings' },
     ],
-  },
-  {
-    id: 'school-shield-2025',
-    date: '2025-08-31',
-    category: 'tournament',
-    title: 'NSW Schools Shield Gold',
-    location: 'New South Wales',
-    body: 'Gold medallist representing Menai High School in the NSW Secondary School Boys Shield Teams event.',
-    imageUrl: '/images/nsw-schools-shield-gold-2025.jpg',
-    imageAlt: 'Lachlan Leung at the NSW Secondary School Boys Shield Championships 2025',
   },
   {
     id: 'diamond-award-2024',
