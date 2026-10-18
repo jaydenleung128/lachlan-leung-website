@@ -33,7 +33,7 @@ const EVENTS: TimelineEvent[] = [
   },
   {
     id: 'korea-2025',
-    date: '2025-01-01',
+    date: '2025-12-01',
     category: 'holiday',
     title: 'Family Trip to Korea',
     location: 'Seoul, South Korea',
