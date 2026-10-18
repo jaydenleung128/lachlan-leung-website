@@ -26,7 +26,7 @@ const EVENTS: TimelineEvent[] = [
     id: '18th-birthday-2026',
     date: '2026-10-19',
     category: 'milestone',
-    title: '18th Birthday',
+    title: 'Happy 18th Birthday',
     body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Loved always. Remembered forever. 💜🏓',
     imageUrl: '/images/18th-birthday-cake.png',
     imageAlt: "Lachlan Leung's 18th birthday cake",
