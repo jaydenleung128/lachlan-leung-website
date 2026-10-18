@@ -42,7 +42,7 @@ const EVENTS: TimelineEvent[] = [
   },
   {
     id: 'ranked-2025',
-    date: '2025-08-31',
+    date: '2025-01-31',
     category: 'tournament',
     title: 'Career-High Rankings',
     location: 'Australia',
@@ -57,7 +57,7 @@ const EVENTS: TimelineEvent[] = [
   },
   {
     id: 'school-shield-2025',
-    date: '2025-01-31',
+    date: '2025-08-31',
     category: 'tournament',
     title: 'NSW Schools Shield Gold',
     location: 'New South Wales',
