@@ -28,7 +28,7 @@ const EVENTS: TimelineEvent[] = [
     category: 'milestone',
     title: 'Happy 18th Birthday',
     body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Loved always. Remembered forever. 💜🏓',
-    imageUrl: '/images/18th-birthday-cake.png',
+    imageUrl: '/images/18th-birthday-cake.jpg',
     imageAlt: "Lachlan Leung's 18th birthday cake",
   },
   {
