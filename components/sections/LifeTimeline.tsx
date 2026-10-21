@@ -33,6 +33,7 @@ const EVENTS: TimelineEvent[] = [
       { url: '/images/18th-birthday-2.jpg', alt: "Lachlan Leung's 18th birthday celebration" },
       { url: '/images/18th-birthday-3.png', alt: "Lachlan Leung's 18th birthday" },
       { url: '/images/18th-birthday-4.jpg', alt: "Lachlan Leung's 18th birthday" },
+      { url: '/images/18th-birthday-5.jpg', alt: 'Lachlan in Korea 2025' },
     ],
   },
   {
