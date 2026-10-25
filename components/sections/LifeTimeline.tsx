@@ -27,7 +27,7 @@ const EVENTS: TimelineEvent[] = [
     date: '2026-10-19',
     category: 'milestone',
     title: 'Happy 18th Birthday',
-    body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Loved always. Remembered forever. 💜🏓 Juno and family visited Lachlan today (19th Oct) to celebrate what would have been his 18th birthday. Celina wrote "Happy Birthday! Missing you so much and wishing you were here to celebrate."',
+    body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Remembered forever. 💜🏓 Juno and family visited Lachlan to celebrate what would have been his 18th birthday. Celina wrote, "Happy Birthday! Missing you so much and wishing you were here to celebrate." Pictured are Tony, Juno, Juston, and Lachlan at the 2024 National Junior Championships. Lachlan at Korea state library in Dec 2025.',
     images: [
 
 
