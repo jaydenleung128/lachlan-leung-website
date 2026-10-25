@@ -27,7 +27,7 @@ const EVENTS: TimelineEvent[] = [
     date: '2026-10-19',
     category: 'milestone',
     title: 'Happy 18th Birthday',
-    body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Loved always. Remembered forever. 💜🏓 Juno visited Lachlan today (19th Oct) to celebrate what would have been his 18th birthday.',
+    body: 'Forever 17, forever our champion. Your passion, courage and beautiful spirit will live on in our hearts forever. Loved always. Remembered forever. 💜🏓 Juno visited Lachlan today (19th Oct) to celebrate what would have been his 18th birthday. Celina wrote "Happy Birthday! Missing you so much and wishing you were here to celebrate."',
     images: [
 
 
