@@ -14,9 +14,10 @@ interface TimelineEvent {
   location?: string
   body: string
   youtubeId?: string
+  youtubeIds?: string[]
   imageUrl?: string
   imageAlt?: string
-  images?: { url: string; alt: string }[]
+  images?: { url: string; alt: string; caption?: string }[]
 }
 
 // ─── Data (newest first) ──────────────────────────────────────────────────────
@@ -46,10 +47,17 @@ const EVENTS: TimelineEvent[] = [
     id: 'korea-2025',
     date: '2025-12-01',
     category: 'holiday',
-    title: 'Family Trip to Korea',
+    title: 'Family Trip to South Korea and Hong Kong',
     location: 'Seoul, South Korea',
     body: 'A cherished trip to South Korea with his family — visiting the Seoul National Library, the Deer Park, and exploring the city he loved. One of his final adventures.',
-    youtubeId: 'DZrig1XNVxA',
+    images: [
+      {
+        url: '/images/korea-hk-wtt-2025.jpg',
+        alt: 'Lachlan with WTT CEO Steven Dainton and Adam Bobrow in Hong Kong',
+        caption: 'Lachlan receiving a WTT experience table tennis book from WTT CEO Steven Dainton. Picture Steven Dainton, Lachlan and Adam Bobrow (right)',
+      },
+    ],
+    youtubeIds: ['DZrig1XNVxA', 'eRMseY21tmE', 'f7QtElo6-cM', 'T0KoOPAWlJ0', 'SghLJ03nHDU', 'gpq-XouGfqU'],
   },
   {
     id: 'school-shield-2025',
@@ -366,27 +374,38 @@ function EventContent({ event }: { event: TimelineEvent }) {
       {event.images && event.images.length > 0 && (
         <div className={`mt-4 grid gap-2 ${event.images.length === 1 ? 'grid-cols-1' : event.images.length === 3 ? 'grid-cols-3' : event.images.length >= 4 ? 'grid-cols-2' : 'grid-cols-2'}`}>
           {event.images.map((img, i) => (
-            <div key={i} className="rounded-xl overflow-hidden">
-              <img src={img.url} alt={img.alt} className="w-full h-auto" style={{ display: 'block' }} />
-            </div>
+            <figure key={i}>
+              <div className="rounded-xl overflow-hidden">
+                <img src={img.url} alt={img.alt} className="w-full h-auto" style={{ display: 'block' }} />
+              </div>
+              {img.caption && (
+                <figcaption
+                  className="font-sans text-xs leading-relaxed mt-2"
+                  style={{ color: '#7a6558' }}
+                >
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
           ))}
         </div>
       )}
 
-      {event.youtubeId && (
+      {[...(event.youtubeId ? [event.youtubeId] : []), ...(event.youtubeIds ?? [])].map((id) => (
         <div
+          key={id}
           className="mt-4 rounded-xl overflow-hidden aspect-video"
           style={{ background: '#e8ddd4' }}
         >
           <iframe
-            src={`https://www.youtube.com/embed/${event.youtubeId}`}
+            src={`https://www.youtube.com/embed/${id}`}
             title={event.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full h-full"
           />
         </div>
-      )}
+      ))}
     </div>
   )
 }
