@@ -25,6 +25,7 @@ interface TimelineEvent {
 const EVENTS: TimelineEvent[] = [
   {
     id: '18th-birthday-2026',
+    youtubeId: 'b-p6uMNA3QE',
     date: '2026-10-19',
     category: 'milestone',
     title: 'Happy 18th Birthday',
